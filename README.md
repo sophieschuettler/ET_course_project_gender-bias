@@ -1,9 +1,9 @@
-# **Course project:** Title
-**Authors:** *Author 1*, *Author 2* & *Author 3*
+# **Course project:** Implicit gender bias in language processing
+**Authors:** *Aylina Ashkenov*, *Qianyue Li*, *Sakshi Takawale*, *Sophie Schüttler* 
 
 **Course:** *Acquisition and analysis of eye-tracking data*
 
-**Semester:** *Summer semester 2023*
+**Semester:** *Summer semester 2026*
 
 ## Project Description
 > Please provide a short description of the main goals. 
