@@ -1,0 +1,75 @@
+pygaze initiation report start
+display resolution: 1920x1080
+display size in cm: 33.8x27.1
+samplerate: 60.0 Hz
+sampletime: 16.666666666666668 ms
+fixation threshold: 1.5 degrees
+speed threshold: 35 degrees/second
+acceleration threshold: 9500 degrees/second**2
+pygaze initiation report end
+pygaze calibration report start
+accuracy (degrees): LX=0.4493784645265215, LY=0.4225765602841565, RX=0.35570785909405506, RY=0.36954103759372015
+accuracy (in pixels): LX=21.830399999999997, LY=20.528399999999994, RX=17.279999999999976, RY=17.951999999999998
+precision (RMS noise in pixels): X=21.887568813017808, Y=24.81439261542603
+distance between participant and display: 57.0 cm
+fixation threshold: 72.1350984010696 pixels
+speed threshold: 1.6827679496329635 pixels/ms
+acceleration threshold: 460.9834158742855 pixels/ms**2
+pygaze calibration report end
+start_trial
+instruction_onset
+fixation_onset
+sentence_onset
+text_onset
+fixation_onset
+sentence_onset
+text_onset
+fixation_onset
+sentence_onset
+text_onset
+fixation_onset
+sentence_onset
+text_onset
+fixation_onset
+sentence_onset
+text_onset
+fixation_onset
+sentence_onset
+text_onset
+fixation_onset
+sentence_onset
+text_onset
+fixation_onset
+sentence_onset
+text_onset
+fixation_onset
+sentence_onset
+text_onset
+fixation_onset
+sentence_onset
+text_onset
+fixation_onset
+sentence_onset
+text_onset
+fixation_onset
+sentence_onset
+text_onset
+fixation_onset
+sentence_onset
+text_onset
+fixation_onset
+sentence_onset
+text_onset
+fixation_onset
+sentence_onset
+text_onset
+fixation_onset
+sentence_onset
+text_onset
+fixation_onset
+sentence_onset
+text_onset
+fixation_onset
+sentence_onset
+text_onset
+stop_trial
