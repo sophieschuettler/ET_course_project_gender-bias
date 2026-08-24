@@ -4,8 +4,7 @@ import pandas as pd
 from data.coding.subject_info import SUBJECT_INFO
 from typing import cast
 
-# --- path roots (the single place these are defined) ---
-ROOT= Path(__file__).resolve().parents[1]     # project root
+ROOT= Path(__file__).resolve().parents[1]    
 DATA = ROOT / "data"
 RAW = DATA / "raw"
 INTERIM = DATA / "interim"
@@ -17,10 +16,9 @@ PLOTS = ROOT / "plots"
 QC = PLOTS/ "quality_control"
 ANALYSIS = PLOTS / "analysis"
 
-def font_path(name):                       # e.g. font_path("RobotoMono-Regular.ttf")
+def font_path(name):             
     return FONTS / name
 
-# --- checkpoints (parquet + provenance manifest) ---
 def _git_sha():
     try:
         return subprocess.run(["git", "rev-parse", "--short", "HEAD"],
@@ -44,7 +42,7 @@ def load_checkpoint(stage, pid):
 def list_participants(stage):
     return sorted(p.stem for p in (INTERIM / stage).glob("*.parquet"))
 
-# --- other files: raw data, per-participant coding (data, not config) ---
+
 def load_raw_event(pid):
     return pd.read_csv(RAW / f"{pid}.csv", sep=',', header=0)         
 
