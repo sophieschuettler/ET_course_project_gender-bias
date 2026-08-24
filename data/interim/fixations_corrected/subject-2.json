@@ -1,0 +1,14 @@
+{
+  "stage": "fixations_corrected",
+  "pid": "subject-2",
+  "git": "0f65c79",
+  "when": "2026-08-23T21:03:20.090078",
+  "n_rows": 1950,
+  "params": {
+    "methods": [
+      "chain",
+      "merge",
+      "cluster"
+    ]
+  }
+}

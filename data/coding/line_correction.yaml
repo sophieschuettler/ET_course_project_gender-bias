@@ -1,0 +1,127 @@
+subjects:
+  - id: 3
+    trials:
+      - 10:
+        - 'Im Rahmen einer öffentlichen Veranstaltung wird über die Zukunft der'
+        - 'Hochschulen und die Forschungsförderung diskutiert. Die Professor*innen' 
+        - 'diskutieren über die Zukunft der Hochschulen und setzen sich für mehr'
+        - 'Forschungsgelder ein, doch diese Männer lehnen die Vorschläge ab. Die' 
+        - 'nächsten Schritte werden derzeit kontrovers diskutiert.'
+      - 15:
+        - 'Im Rahmen einer öffentlichen Veranstaltung wird über Sicherheit,'
+        - 'gesellschaftlichen Zusammenhalt und politische Reformen gesprochen. Die' 
+        - 'Einwohnerinnen wünschen sich Sicherheit und verlässliche Perspektiven,'
+        - 'doch diese Gruppe von Männern sieht Reformbedarf im System. Die'
+        - 'weitere Entwicklung bleibt Gegenstand öffentlicher Debatten.'
+  - id: 4
+    trials:
+      - 2:
+        - 'Im Rahmen einer öffentlichen Veranstaltung wird über Sicherheit,'
+        - 'gesellschaftlichen Zusammenhalt und politische Reformen gesprochen. Die'
+        - 'Einwohnerinnen wünschen sich Sicherheit und verlässliche Perspektiven,'
+        - 'doch diese Gruppe von Frauen sieht Reformbedarf im System. Die'
+        - 'weitere Entwicklung bleibt Gegenstand öffentlicher Debatten.'
+      - 16:
+        - 'Im Rahmen einer öffentlichen Veranstaltung wird über die Zukunft der'
+        - 'Hochschulen und die Forschungsförderung diskutiert. Die Professor*innen'
+        - 'diskutieren über die Zukunft der Hochschulen und setzen sich für mehr' 
+        - 'Forschungsgelder ein, doch diese Frauen lehnen die Vorschläge ab. Die'
+        - 'nächsten Schritte werden derzeit kontrovers diskutiert.'
+  - id: 5
+    trials:
+      - 7:
+        - 'Im Rahmen einer städtischen Planungsrunde wird über die zukünftige'
+        - 'Mobilität und den Ausbau des Nahverkehrs diskutiert. Die Ingenieurinnen' 
+        - 'diskutieren über nachhaltige Verkehrskonzepte und setzen sich für'
+        - 'den Ausbau des ÖPNV ein, doch diese Männer lehnen die Vorschläge ab.'
+        - 'Die nächsten Schritte werden derzeit kontrovers diskutiert.'
+      - 14:
+        - 'Im Rahmen einer öffentlichen Veranstaltung wird über Sicherheit,'
+        - 'gesellschaftlichen Zusammenhalt und politische Reformen gesprochen. Die'
+        - 'Einwohner*innen wünschen sich Sicherheit und verlässliche Perspektiven,'
+        - 'doch diese Gruppe von Männern sieht Reformbedarf im System. Die'
+        - 'weitere Entwicklung bleibt Gegenstand öffentlicher Debatten.'
+  - id: 6
+    trials:
+      - 2:
+        - 'Im Rahmen einer städtischen Planungsrunde wird über die zukünftige'
+        - 'Mobilität und den Ausbau des Nahverkehrs diskutiert. Die Ingenieurinnen'
+        - 'diskutieren über nachhaltige Verkehrskonzepte und setzen sich für'
+        - 'den Ausbau des ÖPNV ein, doch diese Frauen lehnen die Vorschläge ab.'
+        - 'Die nächsten Schritte werden derzeit kontrovers diskutiert.'
+      - 8:
+        - 'Im Rahmen einer öffentlichen Veranstaltung wird über Sicherheit,'
+        - 'gesellschaftlichen Zusammenhalt und politische Reformen gesprochen. Die'
+        - 'Einwohner*innen wünschen sich Sicherheit und verlässliche Perspektiven,'
+        - 'doch diese Gruppe von Frauen sieht Reformbedarf im System. Die'
+        - 'weitere Entwicklung bleibt Gegenstand öffentlicher Debatten.'
+  - id: 9
+    trials:
+      - 6:
+        - 'Im Rahmen einer öffentlichen Veranstaltung wird über Sicherheit,'
+        - 'gesellschaftlichen Zusammenhalt und politische Reformen gesprochen. Die'
+        - 'Einwohnerinnen wünschen sich Sicherheit und verlässliche Perspektiven,'
+        - 'doch diese Gruppe von Männern sieht Reformbedarf im System. Die'
+        - 'weitere Entwicklung bleibt Gegenstand öffentlicher Debatten.'
+      - 10:
+        - 'Im Rahmen einer öffentlichen Veranstaltung wird über die Zukunft der'
+        - 'Hochschulen und die Forschungsförderung diskutiert. Die Professor*innen'
+        - 'diskutieren über die Zukunft der Hochschulen und setzen sich für mehr'
+        - 'Forschungsgelder ein, doch diese Männer lehnen die Vorschläge ab. Die'
+        - 'nächsten Schritte werden derzeit kontrovers diskutiert.'
+  - id: 10
+    trials:
+      - 3:
+        - 'Im Rahmen einer öffentlichen Veranstaltung wird über Sicherheit,'
+        - 'gesellschaftlichen Zusammenhalt und politische Reformen gesprochen. Die'
+        - 'Einwohnerinnen wünschen sich Sicherheit und verlässliche Perspektiven,'
+        - 'doch diese Gruppe von Frauen sieht Reformbedarf im System. Die'
+        - 'weitere Entwicklung bleibt Gegenstand öffentlicher Debatten.'
+      - 4:
+        - 'Im Rahmen einer öffentlichen Veranstaltung wird über die Zukunft der'
+        - 'Hochschulen und die Forschungsförderung diskutiert. Die Professor*innen'
+        - 'diskutieren über die Zukunft der Hochschulen und setzen sich für mehr' 
+        - 'Forschungsgelder ein, doch diese Frauen lehnen die Vorschläge ab. Die'
+        - 'nächsten Schritte werden derzeit kontrovers diskutiert.'
+  - id: 11
+    trials:
+      - 6:         
+        - 'Im Rahmen einer öffentlichen Veranstaltung wird über Sicherheit,'
+        - 'gesellschaftlichen Zusammenhalt und politische Reformen gesprochen. Die'
+        - 'Einwohner*innen wünschen sich Sicherheit und verlässliche Perspektiven,'
+        - 'doch diese Gruppe von Männern sieht Reformbedarf im System. Die'
+        - 'weitere Entwicklung bleibt Gegenstand öffentlicher Debatten.'
+      - 10:
+        - 'Im Rahmen einer städtischen Planungsrunde wird über die zukünftige'
+        - 'Mobilität und den Ausbau des Nahverkehrs diskutiert. Die Ingenieurinnen' 
+        - 'diskutieren über nachhaltige Verkehrskonzepte und setzen sich für'
+        - 'den Ausbau des ÖPNV ein, doch diese Männer lehnen die Vorschläge ab.'
+        - 'Die nächsten Schritte werden derzeit kontrovers diskutiert.'
+  - id: 12
+    trials:
+      - 2:
+        - 'Im Rahmen einer öffentlichen Veranstaltung wird über Sicherheit,'
+        - 'gesellschaftlichen Zusammenhalt und politische Reformen gesprochen. Die'
+        - 'Einwohner*innen wünschen sich Sicherheit und verlässliche Perspektiven,'
+        - 'doch diese Gruppe von Frauen sieht Reformbedarf im System. Die'
+        - 'weitere Entwicklung bleibt Gegenstand öffentlicher Debatten.'
+      - 10:
+        - 'Im Rahmen einer städtischen Planungsrunde wird über die zukünftige'
+        - 'Mobilität und den Ausbau des Nahverkehrs diskutiert. Die Ingenieurinnen'
+        - 'diskutieren über nachhaltige Verkehrskonzepte und setzen sich für'
+        - 'den Ausbau des ÖPNV ein, doch diese Frauen lehnen die Vorschläge ab.'
+        - 'Die nächsten Schritte werden derzeit kontrovers diskutiert.'
+  - id: 13
+    trials:
+      - 0:
+        - 'Im Rahmen einer öffentlichen Veranstaltung wird über Sicherheit,'
+        - 'gesellschaftlichen Zusammenhalt und politische Reformen gesprochen. Die' 
+        - 'Einwohnerinnen wünschen sich Sicherheit und verlässliche Perspektiven,'
+        - 'doch diese Gruppe von Männern sieht Reformbedarf im System. Die'
+        - 'weitere Entwicklung bleibt Gegenstand öffentlicher Debatten.'
+      - 1:
+        - 'Im Rahmen einer öffentlichen Veranstaltung wird über die Zukunft der'
+        - 'Hochschulen und die Forschungsförderung diskutiert. Die Professor*innen' 
+        - 'diskutieren über die Zukunft der Hochschulen und setzen sich für mehr'
+        - 'Forschungsgelder ein, doch diese Männer lehnen die Vorschläge ab. Die' 
+        - 'nächsten Schritte werden derzeit kontrovers diskutiert.'
