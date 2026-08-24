@@ -28,18 +28,19 @@ def cleaning(data, padding_window=13):
     padded_invalid = base_invalid.rolling(window=padding_window, center=True, min_periods=1).max().astype(bool)     #remove those next to the invalid data
     data_clean.loc[padded_invalid, ['BPOGX', 'BPOGY']] = np.nan
 
-    print(f"The percentage of invalid data is {(sum(np.isnan(data_clean['BPOGX'].values))/len(data_clean['BPOGX'])):.2%}")
+    invalid_pct = sum(np.isnan(data_clean['BPOGX'].values))/len(data_clean['BPOGX'])
 
-    return data_clean 
+    print(f"The percentage of invalid data is {(invalid_pct):.2%}")
+
+    return data_clean, invalid_pct
 
 
 def get_trial_chunks(data, start_marker, end_marker):
     # to extract samples from each sentences (between sentence onset and question onset)
     starts = data.index[data['USER']==start_marker].tolist()
-    print(f"Starts: {starts}")
+    #print(f"Starts: {starts}")
     ends = data.index[data['USER']==end_marker].tolist()
-    print(f"Ends: {ends}")
-
+    #print(f"Ends: {ends}")
 
     chunk_list = []
     for i, (start, end) in enumerate(zip(starts, ends)):

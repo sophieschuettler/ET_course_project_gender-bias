@@ -64,20 +64,40 @@ def create_aoi_boxes(data, res, font_size):
 
 def create_seq(fixations, truncate=True):
     seq = {}
+    for sent_i, trial in fixations.groupby('Sentence_i', sort=True):
+        if truncate:
+            trial = trial[trial['keep'] == True]
+        trial = trial.sort_values('Start')
+        if trial.empty:            # excluded / skipped trials (e.g. subj7 t9) drop out here
+            continue
+        tuples = [(r['X_px'], r['Y_px'], r['Start'], r['Start'] + r['Duration'])
+                  for _, r in trial.iterrows()]
+        seq[int(sent_i)] = eyekit.FixationSequence(tuples)
+    return seq
 
-    for i, row in fixations.iterrows():
-        if truncate == True:
-            trial_fixations = fixations[(fixations['Sentence_i'] == i) & (fixations['keep']==True)]
-        else:
-            trial_fixations = fixations[(fixations['Sentence_i'] == i)]
 
-        # Extract fixations into a list of tuples: (x, y, start_time, end_time)
-        # Note: end_time = start + duration
-        fixation_tuples = [
-            (row['X_px'], row['Y_px'], row['Start'], row['Start'] + row['Duration'])
-            for _, row in trial_fixations.iterrows()
-        ]
+def correct_to_df(fixations, seq, text_blocks, methods):
+    ''' correct each trial and put it and the stats in the df'''
+    out = []
+    for i in seq:
+        trial = (fixations[(fixations.Sentence_i == i) & (fixations.keep == True)].sort_values("Start").copy())
+        s = seq[i].copy()
+        d, k = s.snap_to_lines(text_blocks[i], method=methods)
 
-        seq[i] = eyekit.FixationSequence(fixation_tuples)
+        ys = [f.y for f in s]
+        assert len(ys) == len(trial), f"trial {i}: {len(ys)} fix vs {len(trial)} rows"
+        trial["Y_snapped"] = ys     # snap only changes y position
+        trial["delta"], trial["kappa"] = d, k
+        out.append(trial)
+    return pd.concat(out).reset_index(drop=True)
 
+
+def seq_from_df(corrected, x_col='X_px', y_col='Y_snapped'):
+    '''rebuild {trial: FixationSequence} from a corrected fixations table.'''
+    seq = {}
+    for i, t in corrected.groupby('Sentence_i', sort=True):
+        t = t.sort_values('Start')
+        seq[int(i)] = eyekit.FixationSequence(
+            [(r[x_col], r[y_col], r['Start'], r['Start'] + r['Duration'])
+             for _, r in t.iterrows()])
     return seq

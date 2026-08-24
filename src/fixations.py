@@ -1,6 +1,7 @@
 from I2MC import I2MC
 import numpy as np
 import pandas as pd
+import config
 
 import sys, types
 nslr_stub = types.ModuleType('nslr_hmm')
@@ -13,14 +14,27 @@ sys.modules['nslr'] = types.ModuleType('nslr')
 from cateyes import classify_velocity, classify_dispersion
 
 
+def detect_with(data, method, fix_c, sacc_c, res, dist, freq, screen_size, threshold):
+    segments, classes = fixation_detection(data, method, res, dist,
+            freq, screen_size, threshold)      
+    data[f'classes_{method}'] = classes
+    data[f'segments_{method}'] = segments
+
+    data = fixation_merge_clean(data, (f'classes_{method}', f'segments_{method}'),
+                                freq=config.SMPL_RATE, criteria=fix_c)
+    data = saccade_clean(data, (f'classes_{method}_clean', f'segments_{method}_clean'),
+                         min_samples=sacc_c)
+    return data
+
+
 def fixation_detection(data, method, res, dist, freq, screen_size, threshold=()):
     df = data.copy()
 
-    if method == 'I-DT':
+    if method == 'idt':
         segments, classes = classify_dispersion(df['X_deg'].values, df['Y_deg'].values, df['TIME'].values, *threshold)
-    elif method == 'I-VT':
+    elif method == 'ivt':
         segments, classes = classify_velocity(df['X_deg'].values, df['Y_deg'].values, df['TIME'].values, *threshold)
-    elif method == 'I2MC':
+    elif method == 'i2mc':
         fixations, _ = fix_detect_I2MC(df, res, dist, freq, screen_size)
         segments, classes = i2mc_to_cateyes(fixations, len(df))
     else:
@@ -61,7 +75,7 @@ def i2mc_to_cateyes(fixations, n_samples):
 
 
 
-def fixation_merge_clean(data, cols, freq, criteria=(1.0, 80, 600)):
+def fixation_merge_clean(data, cols, freq, criteria):
     '''
     params:
     - data: the input et data dataframe
@@ -124,14 +138,14 @@ def fixation_merge_clean(data, cols, freq, criteria=(1.0, 80, 600)):
             
     # Check the very last fixation block
     if current_start_t is not None:
-        duration = (current_end_t - current_start_t) * 1000 + (1000 / 150)
+        duration = (current_end_t - current_start_t) * 1000 + (1000 / freq)
         if duration >= min_duration and duration <= max_duration:
             valid_fixation_blocks.append((current_start_t, current_end_t))
 
-    print(f"Total Valid Fixations Found: {len(valid_fixation_blocks)}")
+    #print(f"Total Valid Fixations Found: {len(valid_fixation_blocks)}")
 
     # Demote all old, noisy fixations to 'Unclassified'
-    df.loc[df[ori_classes] == 'Fixation', new_classes] = 'Saccade' #NOTE: not sure whether to put saccade or None here
+    df.loc[df[ori_classes] == 'Fixation', new_classes] = 'None' #NOTE: not sure whether to put saccade or None here
 
     # Promote our validated blocks back to 'Fixation' 
     for start_t, end_t in valid_fixation_blocks:

@@ -1,6 +1,6 @@
 import config
 import re
-from subject_info import SUBJECT_INFO
+from data.coding.subject_info import SUBJECT_INFO
 import pandas as pd
 import os.path as path
 import yaml

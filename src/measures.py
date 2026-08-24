@@ -58,3 +58,18 @@ def fixation_measures(seqs, aois, exclusion, n_areas=3, right_to_left=False):
                 "regressions_in":      number_of_regressions_in(aoi, seq),
             })
     return pd.DataFrame(rows)
+
+
+def process_all_subjects(events, seqs, aois, subject_info):
+    all_subject_dfs = []
+    for subj_id, seqs_subj in seqs.items():            
+        info = subject_info[subj_id]
+        exclusions = set(info.get("exclude") or [])
+
+        df_subj = fixation_measures(seqs_subj, aois[subj_id], exclusions)   
+
+        df_subj["subject"] = subj_id
+        events_subj = events[subj_id]                   
+        df_subj["Code"] = df_subj["trial_id"].map(events_subj["Code"]) 
+        all_subject_dfs.append(df_subj)
+    return pd.concat(all_subject_dfs, ignore_index=True)

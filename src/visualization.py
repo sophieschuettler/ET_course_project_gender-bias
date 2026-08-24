@@ -32,7 +32,7 @@ def plot_events(data, subject, show=True, save_path=None):
 
     ax.plot(logs["TIME"], logs["USER"], marker="o")
 
-    ax.set_title(f"Event timeline sanity check for subject {subject}")
+    ax.set_title(f"Event timeline sanity check for {subject}")
     ax.set_xlabel("Time (s)")
     ax.set_ylabel("Events")
     ax.grid(True)
@@ -78,7 +78,7 @@ def plot_gaze_across_time(data, axis, subject, bar=True, note="", show=True, sav
 
     ax.set_xlabel("Time (s)")
     ax.set_ylabel(f"{axis.upper()} Position")
-    ax.set_title(f"Time vs. {axis.upper()}-Position for subject {subject} {note}")
+    ax.set_title(f"Time vs. {axis.upper()}-Position for {subject} {note}")
 
     plt.tight_layout()
 
@@ -274,7 +274,7 @@ def plot_main_sequence(
 
     # group to analyze each saccade event individually
     saccade_groups = saccades.groupby(segments_col)
-    print(f"Total Saccades Detected: {len(saccade_groups)}")
+    #print(f"Total Saccades Detected: {len(saccade_groups)}")
 
     amplitudes = []
     peak_velocities = []
@@ -345,4 +345,64 @@ def plot_gazepath_eyekit(text_block, aoi, seq, res, save_path=None):
     return img
 
 
-#def plot_analysis(restults, event_data)
+
+def plot_measure(results, measure, condition_map, regions=('RN', 'AN', 'SPILL'), balanced=False, show=True, save_path=None):
+    conditions  = list(condition_map.keys()) #['C1', 'C2', 'C3', 'C4', 'C5', 'C6']
+    labels = list(condition_map.values()) #['masc+M\n(match)', 'masc+F\n(mismatch)', 'fem+M\n(mismatch)', 'fem+F\n(match)', 'star+M', 'star+F']
+              
+    # Standardize region casing
+    results['region'] = results['aoi_type'].str.upper()
+    
+    # Force missing data to 0
+    results[measure] = results[measure].fillna(0)
+    
+    # Subject-level means first
+    subj_means = results.groupby(['subject', 'Code', 'region'])[measure].mean().reset_index()
+    
+    # Grand Means and Standard Errors across subjects
+    piv = subj_means.pivot_table(index='Code', columns='region', values=measure, aggfunc='mean').reindex(conditions)
+    err = subj_means.pivot_table(index='Code', columns='region', values=measure, aggfunc='sem').reindex(conditions)
+
+    rcolors = {'RN': '#6a8caf', 'AN': '#c94c4c', 'SPILL': '#e0a458'}
+    x = np.arange(len(conditions))
+    w = 0.8 / len(regions)
+    
+    fig, ax = plt.subplots(figsize=(11, 6))
+    
+    for j, reg in enumerate(regions):
+        vals = piv[reg].values if reg in piv else np.zeros(len(conditions))
+        err_vals = err[reg].values if reg in err else np.zeros(len(conditions))
+        off = (j - (len(regions) - 1) / 2) * w
+        
+        ax.bar(
+            x + off, vals, w, yerr=err_vals, capsize=4, label=reg, 
+            color=rcolors.get(reg, '0.5'), edgecolor='0.3', alpha=0.88,
+            error_kw={'ecolor': '0.6', 'elinewidth': 1.2, 'capthick': 1.2, 'alpha': 0.9}
+        )
+               
+    ax.set_xticks(x)
+    ax.set_xticklabels(labels, fontsize=9)
+    
+    ylab_map = {
+        'first_pass': 'first-pass fixation (ms)',
+        'total': 'total fixation (ms)',
+        'go_past': 'go-past (ms)',
+        'regression_in': 'regression-in.',
+        'n_fixations': 'number of fixations'
+    }
+    
+    ylab = ylab_map.get(measure, measure)
+    ax.set_ylabel(ylab)
+    ax.set_title(f'{ylab} across conditions (balanced={balanced})')
+    ax.legend(title='region', fontsize=9)
+    ax.margins(y=0.12)
+    
+    plt.tight_layout()
+
+    if save_path:
+        fig.savefig(save_path, dpi=300, bbox_inches="tight")
+
+    if show:
+        plt.show()
+    else:
+        plt.close(fig)
