@@ -8,9 +8,9 @@ import config
 ''' ----------------------------------------------------------
 To use this script, call from the root folder of the repo:
     process individual subject:
-        python -m scripts/01_clean.py --p subject-X
+        python -m scripts.01_clean.py --p subject-X
     process all the subjects:
-        python -m scripts/01_clean.py
+        python -m scripts.01_clean.py
 
 Quality control plots are saved in: 
     /plots/quality_control/01_clean/

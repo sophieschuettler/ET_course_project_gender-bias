@@ -8,9 +8,9 @@ import config
 ''' ----------------------------------------------------------
 To use this script, call from the root folder of the repo:
     process individual subject:
-        python -m scripts/03_drift_correction.py --p subject-X
+        python -m scripts.03_drift_correction.py --p subject-X
     process all the subjects:
-        python -m scripts/03_drift_correction.py
+        python -m scripts.03_drift_correction.py
 
 Stats are saves in:
     /stats/03_drift/

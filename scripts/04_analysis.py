@@ -9,9 +9,9 @@ import config
 '''----------------------------------------------------------
 To use this script, call from the root folder of the repo:
     if 12 subjects (balanced):
-        python -m scripts/04_analysis.py --balanced
+        python -m scripts.04_analysis.py --balanced
     if 14 subjects (all):
-        python -m scripts/04_analysis.py
+        python -m scripts.04_analysis.py
 
 Analysis plots are saved in: 
     /plots/analysis/
