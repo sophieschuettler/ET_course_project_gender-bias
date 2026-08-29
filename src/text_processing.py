@@ -6,8 +6,9 @@ import os.path as path
 import yaml
 
 def find_placement(row):
-    """Replay OpenSesame layout. LETTER_W is calibrated per-trial from the
-    logged RN AOI so it matches the actual rendered glyph advance."""
+    '''
+    "Replay OpenSesame layout. LETTER_W is calibrated per-trial from the logged RN AOI so it matches the actual rendered glyph advance.
+    '''
     tsx     = float(row['text_start_x'])
     tsy     = float(row['text_start_y'])
     box_w   = float(row['box_width'])

@@ -12,6 +12,9 @@ from src.text_processing import find_placement
 
 
 def plot_scanpath_interactive(event_data, fixation_data, subject, sentence_i, res, font_size, font_path, show_numbers=True):
+    '''
+    Interactive gazepath plotting for the use of tail truncation
+    '''
     # Setup fonts
     font_prop = fm.FontProperties(fname=font_path)
     
