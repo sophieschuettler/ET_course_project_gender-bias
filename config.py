@@ -30,37 +30,40 @@ QUEST_ONSET = 'TEXT_ONSET'
 PADDING_WINDOW = 13
 
 
+# ----------- Accuracy & Precision ---------
+ACC_WINDOW = 80 #ms
+
+
 # ---------- Fixation Detection ---------
 FIX_METHODS = ['idt', 'ivt', 'i2mc']
-FIX_DUR_MIN = 80.0
-FIT_DUR_MAX = 600.0   #NOTE: need to look this up
+
 
 FIX_CRITERIA = {
     'detection': {
         'idt': (2.5, 0.08),
-        'ivt': (),   #NOTE: need to fine tune
+        'ivt': (),   
         'i2mc': None
     },
     'cleaning': {
         'sacc_min': 2,
-        'fix_deg_dur': (1.0, 80, 600),    # min deg apart, min_duration, max_duration 
+        'fix_deg_dur': (1.0, 80, 800),     #NOTE: Irmen, 07
     }
 }
 
 # ---------- Drift Correction -----------
-DRIFT_METHODS = ['chain', 'merge', 'cluster']  
-
+DRIFT_METHODS = ['chain', 'regress', 'cluster']  
 
 
 
 # ---------- Conditions ----------------
+# config.py
 CONDITION_MAP = {
-    'C1': 'masc+M\n(match)',
-    'C2': 'masc+F\n(mismatch)',
-    'C3': 'fem+M\n(mismatch)',
-    'C4': 'fem+F\n(match)',
-    'C5': 'star+M',
-    'C6': 'star+F'
+    'C1': {'form': 'masc', 'anaphor': 'M', 'match': 'match'},
+    'C2': {'form': 'masc', 'anaphor': 'F', 'match': 'mismatch'},
+    'C3': {'form': 'fem',  'anaphor': 'M', 'match': 'mismatch'},
+    'C4': {'form': 'fem',  'anaphor': 'F', 'match': 'match'},
+    'C5': {'form': 'star', 'anaphor': 'M', 'match': 'star'},
+    'C6': {'form': 'star', 'anaphor': 'F', 'match': 'star'},
 }
 
 
@@ -72,3 +75,4 @@ MEASURES = [
      "go_past_duration",
      "regressions_in"
 ]
+
