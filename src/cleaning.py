@@ -25,7 +25,7 @@ def cleaning(data, padding_window=13):
         (data_clean['BPOGX'] < 0) | (data_clean['BPOGX'] > 1) |
         (data_clean['BPOGY'] < 0) | (data_clean['BPOGY'] > 1)
     )
-    padded_invalid = base_invalid.rolling(window=padding_window, center=True, min_periods=1).max().astype(bool)     #remove those next to the invalid data
+    padded_invalid = base_invalid.rolling(window=padding_window, center=True, min_periods=1).max().astype(bool) 
     data_clean.loc[padded_invalid, ['BPOGX', 'BPOGY']] = np.nan
 
     invalid_pct = sum(np.isnan(data_clean['BPOGX'].values))/len(data_clean['BPOGX'])
@@ -36,7 +36,9 @@ def cleaning(data, padding_window=13):
 
 
 def get_trial_chunks(data, start_marker, end_marker):
-    # to extract samples from each sentences (between sentence onset and question onset)
+    '''
+    to extract samples from each sentences (between sentence onset and question onset)
+    '''
     starts = data.index[data['USER']==start_marker].tolist()
     #print(f"Starts: {starts}")
     ends = data.index[data['USER']==end_marker].tolist()
