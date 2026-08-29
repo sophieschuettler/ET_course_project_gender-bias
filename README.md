@@ -9,7 +9,9 @@
 > The main goal of the experiment is to find out whether different forms of German role nouns (masculine, feminine, gender-inclusive) elict a gender bias. Eye-tracking is used in this project to examine the reading behaviour while reading differnt role noun forms with male or female anaphor refering to that role noun. To measure their reading behaviour on the role noun and anaphor measures such as fixation times, go past time and regressions is used. In detail the project investigates whether the male roule noun creates a stronger male bias, femine role noun creates a female bias and whether the gender-inclusive star form creates no bias.
 
 ## Experiment Instruction
-> 
+> To perform the experiment, first open the OpenSesame file experiment.osexp. It's important to ensure that the experiment is using PsychoPy as backend.
+> The exeriment has set the screen resolution of 1920 x 1080 pixels. If the used screen has a different resolution either change the screen resolution or the setting in the OpenSesame experiment.
+> In addition the experimental list must be selected in "liste_auswahl" depending on the participants subject number. This is important so each participant is presented with the correct list according to the latin-square design.
 
 ## Data Analysis Instruction
 > @ Qianyue
