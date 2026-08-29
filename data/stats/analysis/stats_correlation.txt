@@ -1,0 +1,56 @@
+
+=== First-pass (masc form): anaphor M-F diff vs exposure ===
+-- self-use --
+
+	Pearson's product-moment correlation
+
+data:  fp$exposure_use and fp$diff
+t = -0.51027, df = 10, p-value = 0.6209
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ -0.6717865  0.4563178
+sample estimates:
+       cor 
+-0.1593021 
+
+-- perceived --
+
+	Pearson's product-moment correlation
+
+data:  fp$exposure_percept and fp$diff
+t = -3.8964, df = 10, p-value = 0.002978
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ -0.9341119 -0.3653797
+sample estimates:
+       cor 
+-0.7764632 
+
+
+=== Go-past (star form): anaphor M-F diff vs exposure ===
+-- self-use --
+
+	Pearson's product-moment correlation
+
+data:  gp$exposure_use and gp$diff
+t = -1.8291, df = 10, p-value = 0.09732
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ -0.8347328  0.1027336
+sample estimates:
+       cor 
+-0.5006881 
+
+-- perceived --
+
+	Pearson's product-moment correlation
+
+data:  gp$exposure_percept and gp$diff
+t = -0.29907, df = 10, p-value = 0.771
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ -0.6338078  0.5071516
+sample estimates:
+        cor 
+-0.09415406 
+

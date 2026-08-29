@@ -1,0 +1,950 @@
+
+##################################################
+             MEASURE: first_pass_duration                   
+##################################################
+
+===== rn =====
+Type III Analysis of Variance Table with Satterthwaite's method
+             Sum Sq Mean Sq NumDF   DenDF F value Pr(>F)
+form            482   240.8     2  29.653  0.0192 0.9810
+anaphor        2556  2556.5     1 158.449  0.2042 0.6520
+form:anaphor  57163 28581.3     2 158.972  2.2825 0.1054
+$emmeans
+ form emmean   SE   df lower.CL upper.CL
+ masc    225 17.7 27.8      189      261
+ fem     221 17.8 28.4      184      257
+ star    221 17.6 27.4      185      257
+
+Results are averaged over the levels of: anaphor 
+Degrees-of-freedom method: satterthwaite 
+Confidence level used: 0.95 
+
+$contrasts
+ contrast    estimate   SE   df t.ratio p.value
+ masc - fem      3.99 22.2 30.1   0.180  0.9823
+ masc - star     3.47 22.1 29.2   0.157  0.9864
+ fem - star     -0.52 22.1 29.7  -0.024  0.9997
+
+Results are averaged over the levels of: anaphor 
+Degrees-of-freedom method: satterthwaite 
+P value adjustment: tukey method for comparing a family of 3 estimates 
+
+$emmeans
+ anaphor emmean   SE   df lower.CL upper.CL
+ M          226 14.5 25.2      196      256
+ F          219 14.5 25.4      189      249
+
+Results are averaged over the levels of: form 
+Degrees-of-freedom method: satterthwaite 
+Confidence level used: 0.95 
+
+$contrasts
+ contrast estimate   SE  df t.ratio p.value
+ M - F        7.04 15.6 158   0.452  0.6520
+
+Results are averaged over the levels of: form 
+Degrees-of-freedom method: satterthwaite 
+
+$emmeans
+form = masc:
+ anaphor emmean   SE   df lower.CL upper.CL
+ M          220 22.4 70.3      175      264
+ F          230 22.2 66.2      186      274
+
+form = fem:
+ anaphor emmean   SE   df lower.CL upper.CL
+ M          248 22.4 68.7      203      292
+ F          194 22.3 71.0      149      238
+
+form = star:
+ anaphor emmean   SE   df lower.CL upper.CL
+ M          210 21.9 64.7      166      254
+ F          233 22.4 69.5      188      277
+
+Degrees-of-freedom method: satterthwaite 
+Confidence level used: 0.95 
+
+$contrasts
+form = masc:
+ contrast estimate   SE  df t.ratio p.value
+ M - F       -10.3 27.0 159  -0.382  0.7027
+
+form = fem:
+ contrast estimate   SE  df t.ratio p.value
+ M - F        53.8 27.2 159   1.977  0.0497
+
+form = star:
+ contrast estimate   SE  df t.ratio p.value
+ M - F       -22.3 26.8 158  -0.833  0.4060
+
+Degrees-of-freedom method: satterthwaite 
+
+
+===== an =====
+Type III Analysis of Variance Table with Satterthwaite's method
+             Sum Sq Mean Sq NumDF  DenDF F value  Pr(>F)  
+form          17331  8665.5     2 190.80  1.2724 0.28253  
+anaphor         647   647.5     1 190.43  0.0951 0.75816  
+form:anaphor  53829 26914.7     2 190.97  3.9519 0.02081 *
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+$emmeans
+ form emmean   SE   df lower.CL upper.CL
+ masc    187 12.1 35.9      162      211
+ fem     178 12.2 36.6      154      203
+ star    164 12.0 35.3      140      189
+
+Results are averaged over the levels of: anaphor 
+Degrees-of-freedom method: satterthwaite 
+Confidence level used: 0.95 
+
+$contrasts
+ contrast    estimate   SE  df t.ratio p.value
+ masc - fem      8.22 14.1 191   0.582  0.8300
+ masc - star    22.09 14.0 190   1.577  0.2579
+ fem - star     13.87 14.1 191   0.986  0.5864
+
+Results are averaged over the levels of: anaphor 
+Degrees-of-freedom method: satterthwaite 
+P value adjustment: tukey method for comparing a family of 3 estimates 
+
+$emmeans
+ anaphor emmean   SE   df lower.CL upper.CL
+ M          175 10.6 22.1      153      197
+ F          178 10.7 22.4      156      200
+
+Results are averaged over the levels of: form 
+Degrees-of-freedom method: satterthwaite 
+Confidence level used: 0.95 
+
+$contrasts
+ contrast estimate   SE  df t.ratio p.value
+ M - F       -3.54 11.5 190  -0.308  0.7582
+
+Results are averaged over the levels of: form 
+Degrees-of-freedom method: satterthwaite 
+
+$emmeans
+form = masc:
+ anaphor emmean   SE   df lower.CL upper.CL
+ M          163 15.8 84.5      132      195
+ F          210 15.6 82.2      179      241
+
+form = fem:
+ anaphor emmean   SE   df lower.CL upper.CL
+ M          180 15.7 84.9      149      212
+ F          176 15.7 84.9      145      208
+
+form = star:
+ anaphor emmean   SE   df lower.CL upper.CL
+ M          180 15.4 79.8      150      211
+ F          149 15.8 84.5      117      180
+
+Degrees-of-freedom method: satterthwaite 
+Confidence level used: 0.95 
+
+$contrasts
+form = masc:
+ contrast estimate   SE  df t.ratio p.value
+ M - F      -46.26 19.9 191  -2.327  0.0210
+
+form = fem:
+ contrast estimate   SE  df t.ratio p.value
+ M - F        4.15 20.0 191   0.207  0.8359
+
+form = star:
+ contrast estimate   SE  df t.ratio p.value
+ M - F       31.49 19.8 191   1.594  0.1126
+
+Degrees-of-freedom method: satterthwaite 
+
+
+===== spill =====
+Type III Analysis of Variance Table with Satterthwaite's method
+              Sum Sq Mean Sq NumDF  DenDF F value Pr(>F)
+form         23394.5 11697.2     2 190.42  1.1395 0.3222
+anaphor       2350.4  2350.4     1 190.16  0.2290 0.6328
+form:anaphor 28047.1 14023.6     2 190.54  1.3661 0.2576
+$emmeans
+ form emmean   SE   df lower.CL upper.CL
+ masc    217 17.3 24.7      182      253
+ fem     211 17.3 25.0      175      246
+ star    192 17.2 24.3      157      228
+
+Results are averaged over the levels of: anaphor 
+Degrees-of-freedom method: satterthwaite 
+Confidence level used: 0.95 
+
+$contrasts
+ contrast    estimate   SE  df t.ratio p.value
+ masc - fem      6.63 17.3 191   0.382  0.9226
+ masc - star    25.04 17.2 190   1.456  0.3145
+ fem - star     18.41 17.3 190   1.066  0.5366
+
+Results are averaged over the levels of: anaphor 
+Degrees-of-freedom method: satterthwaite 
+P value adjustment: tukey method for comparing a family of 3 estimates 
+
+$emmeans
+ anaphor emmean   SE   df lower.CL upper.CL
+ M          203 15.7 17.2      170      236
+ F          210 15.8 17.4      177      243
+
+Results are averaged over the levels of: form 
+Degrees-of-freedom method: satterthwaite 
+Confidence level used: 0.95 
+
+$contrasts
+ contrast estimate   SE  df t.ratio p.value
+ M - F       -6.74 14.1 190  -0.479  0.6328
+
+Results are averaged over the levels of: form 
+Degrees-of-freedom method: satterthwaite 
+
+$emmeans
+form = masc:
+ anaphor emmean   SE   df lower.CL upper.CL
+ M          200 21.3 52.4      157      242
+ F          235 21.0 50.7      192      277
+
+form = fem:
+ anaphor emmean   SE   df lower.CL upper.CL
+ M          222 21.2 52.4      179      264
+ F          199 21.2 52.4      157      242
+
+form = star:
+ anaphor emmean   SE   df lower.CL upper.CL
+ M          188 20.8 49.1      147      230
+ F          196 21.3 52.4      153      239
+
+Degrees-of-freedom method: satterthwaite 
+Confidence level used: 0.95 
+
+$contrasts
+form = masc:
+ contrast estimate   SE  df t.ratio p.value
+ M - F      -34.85 24.4 190  -1.428  0.1550
+
+form = fem:
+ contrast estimate   SE  df t.ratio p.value
+ M - F       22.38 24.6 190   0.910  0.3640
+
+form = star:
+ contrast estimate   SE  df t.ratio p.value
+ M - F       -7.75 24.3 191  -0.320  0.7497
+
+Degrees-of-freedom method: satterthwaite 
+
+
+##################################################
+             MEASURE: go_past_duration                   
+##################################################
+
+===== rn =====
+Type III Analysis of Variance Table with Satterthwaite's method
+               Sum Sq  Mean Sq NumDF   DenDF F value Pr(>F)
+form          1762157   881079     2  35.079  0.0723 0.9304
+anaphor       2013821  2013821     1 154.457  0.1653 0.6849
+form:anaphor 34885642 17442821     2 154.962  1.4316 0.2421
+$emmeans
+ form emmean   SE   df lower.CL upper.CL
+ masc   3623 1480 36.9    625.3     6622
+ fem    3611 1480 36.9    612.2     6609
+ star   2939 1480 36.8    -57.3     5936
+
+Results are averaged over the levels of: anaphor 
+Degrees-of-freedom method: satterthwaite 
+Confidence level used: 0.95 
+
+$contrasts
+ contrast    estimate   SE   df t.ratio p.value
+ masc - fem      12.8 2060 35.1   0.006  1.0000
+ masc - star    684.0 2060 35.1   0.332  0.9410
+ fem - star     671.2 2060 35.1   0.326  0.9431
+
+Results are averaged over the levels of: anaphor 
+Degrees-of-freedom method: satterthwaite 
+P value adjustment: tukey method for comparing a family of 3 estimates 
+
+$emmeans
+ anaphor emmean  SE   df lower.CL upper.CL
+ M         3490 914 43.8     1648     5332
+ F         3292 915 44.0     1449     5135
+
+Results are averaged over the levels of: form 
+Degrees-of-freedom method: satterthwaite 
+Confidence level used: 0.95 
+
+$contrasts
+ contrast estimate  SE  df t.ratio p.value
+ M - F         198 487 154   0.407  0.6849
+
+Results are averaged over the levels of: form 
+Degrees-of-freedom method: satterthwaite 
+
+$emmeans
+form = masc:
+ anaphor emmean   SE   df lower.CL upper.CL
+ M         3140 1540 43.2     37.7     6243
+ F         4107 1540 43.1   1004.2     7209
+
+form = fem:
+ anaphor emmean   SE   df lower.CL upper.CL
+ M         4031 1540 43.5    923.1     7140
+ F         3190 1540 43.1     89.2     6290
+
+form = star:
+ anaphor emmean   SE   df lower.CL upper.CL
+ M         3299 1530 42.6    206.3     6392
+ F         2580 1540 43.4   -526.6     5686
+
+Degrees-of-freedom method: satterthwaite 
+Confidence level used: 0.95 
+
+$contrasts
+form = masc:
+ contrast estimate  SE  df t.ratio p.value
+ M - F        -967 844 155  -1.145  0.2539
+
+form = fem:
+ contrast estimate  SE  df t.ratio p.value
+ M - F         842 851 155   0.989  0.3243
+
+form = star:
+ contrast estimate  SE  df t.ratio p.value
+ M - F         719 838 155   0.859  0.3919
+
+Degrees-of-freedom method: satterthwaite 
+
+
+===== an =====
+Type III Analysis of Variance Table with Satterthwaite's method
+             Sum Sq Mean Sq NumDF   DenDF F value  Pr(>F)  
+form          72871   36436     2  32.551  0.6897 0.50892  
+anaphor       96419   96419     1 163.258  1.8251 0.17858  
+form:anaphor 319944  159972     2 163.734  3.0281 0.05113 .
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+$emmeans
+ form emmean   SE   df lower.CL upper.CL
+ masc    230 36.9 26.7      154      306
+ fem     251 37.0 27.3      175      327
+ star    280 36.7 26.3      204      355
+
+Results are averaged over the levels of: anaphor 
+Degrees-of-freedom method: satterthwaite 
+Confidence level used: 0.95 
+
+$contrasts
+ contrast    estimate   SE   df t.ratio p.value
+ masc - fem     -21.1 43.0 33.1  -0.492  0.8758
+ masc - star    -50.0 42.7 31.9  -1.169  0.4797
+ fem - star     -28.8 42.8 32.7  -0.673  0.7807
+
+Results are averaged over the levels of: anaphor 
+Degrees-of-freedom method: satterthwaite 
+P value adjustment: tukey method for comparing a family of 3 estimates 
+
+$emmeans
+ anaphor emmean   SE   df lower.CL upper.CL
+ M          275 31.6 21.5      209      341
+ F          232 31.7 21.7      166      298
+
+Results are averaged over the levels of: form 
+Degrees-of-freedom method: satterthwaite 
+Confidence level used: 0.95 
+
+$contrasts
+ contrast estimate SE  df t.ratio p.value
+ M - F        43.2 32 163   1.351  0.1786
+
+Results are averaged over the levels of: form 
+Degrees-of-freedom method: satterthwaite 
+
+$emmeans
+form = masc:
+ anaphor emmean   SE   df lower.CL upper.CL
+ M          202 46.4 65.0      110      295
+ F          257 45.9 61.6      166      349
+
+form = fem:
+ anaphor emmean   SE   df lower.CL upper.CL
+ M          275 46.4 63.9      182      367
+ F          227 46.3 65.7      135      320
+
+form = star:
+ anaphor emmean   SE   df lower.CL upper.CL
+ M          348 45.4 60.1      258      439
+ F          211 46.4 64.6      119      304
+
+Degrees-of-freedom method: satterthwaite 
+Confidence level used: 0.95 
+
+$contrasts
+form = masc:
+ contrast estimate   SE  df t.ratio p.value
+ M - F       -55.0 55.4 163  -0.993  0.3222
+
+form = fem:
+ contrast estimate   SE  df t.ratio p.value
+ M - F        47.4 55.8 164   0.849  0.3970
+
+form = star:
+ contrast estimate   SE  df t.ratio p.value
+ M - F       137.2 55.1 163   2.492  0.0137
+
+Degrees-of-freedom method: satterthwaite 
+
+
+===== spill =====
+Type III Analysis of Variance Table with Satterthwaite's method
+             Sum Sq Mean Sq NumDF  DenDF F value Pr(>F)
+form           4147    2074     2 190.40  0.0239 0.9764
+anaphor       33309   33309     1 189.88  0.3837 0.5364
+form:anaphor 270892  135446     2 190.60  1.5601 0.2128
+$emmeans
+ form emmean   SE   df lower.CL upper.CL
+ masc    314 39.3 47.3      234      393
+ fem     322 39.5 48.6      243      402
+ star    312 39.1 46.7      233      391
+
+Results are averaged over the levels of: anaphor 
+Degrees-of-freedom method: satterthwaite 
+Confidence level used: 0.95 
+
+$contrasts
+ contrast    estimate   SE  df t.ratio p.value
+ masc - fem     -8.67 50.4 191  -0.172  0.9838
+ masc - star     1.54 50.0 190   0.031  0.9995
+ fem - star     10.21 50.2 190   0.203  0.9775
+
+Results are averaged over the levels of: anaphor 
+Degrees-of-freedom method: satterthwaite 
+P value adjustment: tukey method for comparing a family of 3 estimates 
+
+$emmeans
+ anaphor emmean   SE   df lower.CL upper.CL
+ M          329 33.5 26.6      260      397
+ F          303 33.6 26.9      234      372
+
+Results are averaged over the levels of: form 
+Degrees-of-freedom method: satterthwaite 
+Confidence level used: 0.95 
+
+$contrasts
+ contrast estimate SE  df t.ratio p.value
+ M - F        25.4 41 190   0.619  0.5364
+
+Results are averaged over the levels of: form 
+Degrees-of-freedom method: satterthwaite 
+
+$emmeans
+form = masc:
+ anaphor emmean   SE  df lower.CL upper.CL
+ M          307 53.3 113      202      413
+ F          320 52.6 112      216      424
+
+form = fem:
+ anaphor emmean   SE  df lower.CL upper.CL
+ M          386 53.3 115      280      491
+ F          259 53.3 115      153      364
+
+form = star:
+ anaphor emmean   SE  df lower.CL upper.CL
+ M          293 51.9 109      190      396
+ F          331 53.3 113      226      437
+
+Degrees-of-freedom method: satterthwaite 
+Confidence level used: 0.95 
+
+$contrasts
+form = masc:
+ contrast estimate   SE  df t.ratio p.value
+ M - F       -12.5 71.0 190  -0.177  0.8600
+
+form = fem:
+ contrast estimate   SE  df t.ratio p.value
+ M - F       127.0 71.5 190   1.776  0.0773
+
+form = star:
+ contrast estimate   SE  df t.ratio p.value
+ M - F       -38.3 70.5 191  -0.543  0.5875
+
+Degrees-of-freedom method: satterthwaite 
+
+
+##################################################
+             MEASURE: regressions_in                   
+##################################################
+
+===== rn =====
+Type III Analysis of Variance Table with Satterthwaite's method
+             Sum Sq Mean Sq NumDF   DenDF F value Pr(>F)
+form         8.3677  4.1838     2  35.212  1.9113 0.1629
+anaphor      0.1900  0.1900     1 156.016  0.0868 0.7687
+form:anaphor 5.4206  2.7103     2 156.285  1.2381 0.2928
+$emmeans
+ form emmean    SE   df lower.CL upper.CL
+ masc  0.819 0.395 33.5   0.0164     1.62
+ fem   1.442 0.395 33.6   0.6390     2.24
+ star  1.649 0.394 33.3   0.8475     2.45
+
+Results are averaged over the levels of: anaphor 
+Degrees-of-freedom method: satterthwaite 
+Confidence level used: 0.95 
+
+$contrasts
+ contrast    estimate    SE   df t.ratio p.value
+ masc - fem    -0.623 0.442 35.4  -1.408  0.3477
+ masc - star   -0.830 0.442 35.1  -1.879  0.1598
+ fem - star    -0.207 0.442 35.2  -0.469  0.8864
+
+Results are averaged over the levels of: anaphor 
+Degrees-of-freedom method: satterthwaite 
+P value adjustment: tukey method for comparing a family of 3 estimates 
+
+$emmeans
+ anaphor emmean    SE   df lower.CL upper.CL
+ M         1.33 0.318 21.5    0.673     1.99
+ F         1.27 0.318 21.6    0.612     1.93
+
+Results are averaged over the levels of: form 
+Degrees-of-freedom method: satterthwaite 
+Confidence level used: 0.95 
+
+$contrasts
+ contrast estimate    SE  df t.ratio p.value
+ M - F      0.0608 0.206 156   0.295  0.7687
+
+Results are averaged over the levels of: form 
+Degrees-of-freedom method: satterthwaite 
+
+$emmeans
+form = masc:
+ anaphor emmean    SE   df lower.CL upper.CL
+ M        0.723 0.434 48.9  -0.1487     1.59
+ F        0.915 0.433 48.2   0.0447     1.79
+
+form = fem:
+ anaphor emmean    SE   df lower.CL upper.CL
+ M        1.370 0.435 49.2   0.4954     2.24
+ F        1.514 0.433 48.6   0.6437     2.38
+
+form = star:
+ anaphor emmean    SE   df lower.CL upper.CL
+ M        1.908 0.430 47.1   1.0435     2.77
+ F        1.390 0.435 49.0   0.5165     2.26
+
+Degrees-of-freedom method: satterthwaite 
+Confidence level used: 0.95 
+
+$contrasts
+form = masc:
+ contrast estimate    SE  df t.ratio p.value
+ M - F      -0.192 0.357 156  -0.537  0.5922
+
+form = fem:
+ contrast estimate    SE  df t.ratio p.value
+ M - F      -0.144 0.360 156  -0.400  0.6895
+
+form = star:
+ contrast estimate    SE  df t.ratio p.value
+ M - F       0.518 0.355 156   1.460  0.1464
+
+Degrees-of-freedom method: satterthwaite 
+
+
+===== an =====
+Type III Analysis of Variance Table with Satterthwaite's method
+              Sum Sq Mean Sq NumDF   DenDF F value  Pr(>F)  
+form         1.95893 0.97946     2  29.232  3.1887 0.05589 .
+anaphor      0.11064 0.11064     1 157.911  0.3602 0.54926  
+form:anaphor 0.48076 0.24038     2 158.364  0.7826 0.45899  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+$emmeans
+ form emmean     SE   df lower.CL upper.CL
+ masc  0.150 0.0975 20.0  -0.0539    0.353
+ fem   0.402 0.0977 20.4   0.1986    0.606
+ star  0.263 0.0971 19.8   0.0601    0.465
+
+Results are averaged over the levels of: anaphor 
+Degrees-of-freedom method: satterthwaite 
+Confidence level used: 0.95 
+
+$contrasts
+ contrast    estimate     SE   df t.ratio p.value
+ masc - fem    -0.253 0.1000 29.8  -2.521  0.0443
+ masc - star   -0.113 0.0995 28.5  -1.138  0.4991
+ fem - star     0.139 0.0998 29.4   1.396  0.3557
+
+Results are averaged over the levels of: anaphor 
+Degrees-of-freedom method: satterthwaite 
+P value adjustment: tukey method for comparing a family of 3 estimates 
+
+$emmeans
+ anaphor emmean     SE   df lower.CL upper.CL
+ M        0.295 0.0874 16.6   0.1099    0.479
+ F        0.248 0.0876 16.8   0.0634    0.433
+
+Results are averaged over the levels of: form 
+Degrees-of-freedom method: satterthwaite 
+Confidence level used: 0.95 
+
+$contrasts
+ contrast estimate     SE  df t.ratio p.value
+ M - F      0.0463 0.0771 158   0.600  0.5493
+
+Results are averaged over the levels of: form 
+Degrees-of-freedom method: satterthwaite 
+
+$emmeans
+form = masc:
+ anaphor emmean    SE   df lower.CL upper.CL
+ M        0.106 0.119 44.5  -0.1332    0.345
+ F        0.193 0.118 42.3  -0.0443    0.430
+
+form = fem:
+ anaphor emmean    SE   df lower.CL upper.CL
+ M        0.446 0.119 43.8   0.2068    0.685
+ F        0.358 0.119 44.8   0.1194    0.597
+
+form = star:
+ anaphor emmean    SE   df lower.CL upper.CL
+ M        0.332 0.116 41.2   0.0966    0.567
+ F        0.194 0.119 44.4  -0.0455    0.433
+
+Degrees-of-freedom method: satterthwaite 
+Confidence level used: 0.95 
+
+$contrasts
+form = masc:
+ contrast estimate    SE  df t.ratio p.value
+ M - F     -0.0869 0.134 158  -0.651  0.5160
+
+form = fem:
+ contrast estimate    SE  df t.ratio p.value
+ M - F      0.0879 0.135 159   0.653  0.5145
+
+form = star:
+ contrast estimate    SE  df t.ratio p.value
+ M - F      0.1378 0.133 158   1.038  0.3008
+
+Degrees-of-freedom method: satterthwaite 
+
+
+===== spill =====
+Type III Analysis of Variance Table with Satterthwaite's method
+              Sum Sq Mean Sq NumDF  DenDF F value Pr(>F)
+form         0.68741 0.34371     2 190.09  1.5753 0.2096
+anaphor      0.03400 0.03400     1 189.69  0.1558 0.6935
+form:anaphor 0.12400 0.06200     2 190.27  0.2842 0.7530
+$emmeans
+ form emmean     SE   df lower.CL upper.CL
+ masc  0.126 0.0686 33.6  -0.0135    0.266
+ fem   0.255 0.0689 34.3   0.1153    0.395
+ star  0.240 0.0683 33.1   0.1015    0.379
+
+Results are averaged over the levels of: anaphor 
+Degrees-of-freedom method: satterthwaite 
+Confidence level used: 0.95 
+
+$contrasts
+ contrast    estimate     SE  df t.ratio p.value
+ masc - fem    -0.129 0.0799 190  -1.617  0.2408
+ masc - star   -0.114 0.0793 190  -1.442  0.3216
+ fem - star     0.015 0.0796 190   0.188  0.9807
+
+Results are averaged over the levels of: anaphor 
+Degrees-of-freedom method: satterthwaite 
+P value adjustment: tukey method for comparing a family of 3 estimates 
+
+$emmeans
+ anaphor emmean     SE   df lower.CL upper.CL
+ M        0.220 0.0603 20.7   0.0945    0.346
+ F        0.194 0.0605 20.9   0.0686    0.320
+
+Results are averaged over the levels of: form 
+Degrees-of-freedom method: satterthwaite 
+Confidence level used: 0.95 
+
+$contrasts
+ contrast estimate    SE  df t.ratio p.value
+ M - F      0.0256 0.065 190   0.395  0.6935
+
+Results are averaged over the levels of: form 
+Degrees-of-freedom method: satterthwaite 
+
+$emmeans
+form = masc:
+ anaphor emmean     SE   df lower.CL upper.CL
+ M        0.141 0.0893 80.5  -0.0369    0.319
+ F        0.111 0.0882 78.3  -0.0643    0.287
+
+form = fem:
+ anaphor emmean     SE   df lower.CL upper.CL
+ M        0.297 0.0892 80.9   0.1196    0.475
+ F        0.213 0.0892 81.0   0.0360    0.391
+
+form = star:
+ anaphor emmean     SE   df lower.CL upper.CL
+ M        0.222 0.0871 75.9   0.0486    0.396
+ F        0.258 0.0893 80.5   0.0807    0.436
+
+Degrees-of-freedom method: satterthwaite 
+Confidence level used: 0.95 
+
+$contrasts
+form = masc:
+ contrast estimate    SE  df t.ratio p.value
+ M - F      0.0296 0.113 190   0.263  0.7930
+
+form = fem:
+ contrast estimate    SE  df t.ratio p.value
+ M - F      0.0836 0.113 190   0.738  0.4617
+
+form = star:
+ contrast estimate    SE  df t.ratio p.value
+ M - F     -0.0363 0.112 190  -0.324  0.7461
+
+Degrees-of-freedom method: satterthwaite 
+
+
+##################################################
+             MEASURE: total_duration                   
+##################################################
+
+===== rn =====
+Type III Analysis of Variance Table with Satterthwaite's method
+              Sum Sq Mean Sq NumDF  DenDF F value   Pr(>F)   
+form         6398773 3199387     2  31.90  6.7062 0.003705 **
+anaphor       166663  166663     1 155.42  0.3493 0.555344   
+form:anaphor 2423042 1211521     2 155.60  2.5395 0.082175 . 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+$emmeans
+ form emmean  SE   df lower.CL upper.CL
+ masc    794 211 19.1      352     1236
+ fem    1241 211 19.2      799     1683
+ star   1389 211 19.0      947     1830
+
+Results are averaged over the levels of: anaphor 
+Degrees-of-freedom method: satterthwaite 
+Confidence level used: 0.95 
+
+$contrasts
+ contrast    estimate  SE   df t.ratio p.value
+ masc - fem      -447 169 32.2  -2.639  0.0331
+ masc - star     -594 169 31.6  -3.519  0.0037
+ fem - star      -148 169 31.9  -0.873  0.6612
+
+Results are averaged over the levels of: anaphor 
+Degrees-of-freedom method: satterthwaite 
+P value adjustment: tukey method for comparing a family of 3 estimates 
+
+$emmeans
+ anaphor emmean  SE   df lower.CL upper.CL
+ M         1170 193 14.2      756     1583
+ F         1113 193 14.3      699     1527
+
+Results are averaged over the levels of: form 
+Degrees-of-freedom method: satterthwaite 
+Confidence level used: 0.95 
+
+$contrasts
+ contrast estimate   SE  df t.ratio p.value
+ M - F        56.9 96.2 155   0.591  0.5553
+
+Results are averaged over the levels of: form 
+Degrees-of-freedom method: satterthwaite 
+
+$emmeans
+form = masc:
+ anaphor emmean  SE   df lower.CL upper.CL
+ M          743 227 25.7      276     1211
+ F          845 227 25.4      379     1312
+
+form = fem:
+ anaphor emmean  SE   df lower.CL upper.CL
+ M         1196 228 25.8      728     1664
+ F         1286 227 25.6      819     1753
+
+form = star:
+ anaphor emmean  SE   df lower.CL upper.CL
+ M         1570 226 24.9     1106     2035
+ F         1207 228 25.8      739     1675
+
+Degrees-of-freedom method: satterthwaite 
+Confidence level used: 0.95 
+
+$contrasts
+form = masc:
+ contrast estimate  SE  df t.ratio p.value
+ M - F      -102.2 167 156  -0.613  0.5408
+
+form = fem:
+ contrast estimate  SE  df t.ratio p.value
+ M - F       -90.5 168 156  -0.538  0.5912
+
+form = star:
+ contrast estimate  SE  df t.ratio p.value
+ M - F       363.3 166 155   2.192  0.0299
+
+Degrees-of-freedom method: satterthwaite 
+
+
+===== an =====
+Type III Analysis of Variance Table with Satterthwaite's method
+             Sum Sq Mean Sq NumDF  DenDF F value  Pr(>F)  
+form         378944  189472     2 190.08  2.0501 0.13156  
+anaphor         410     410     1 189.80  0.0044 0.94700  
+form:anaphor 527886  263943     2 190.22  2.8559 0.05998 .
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+$emmeans
+ form emmean   SE   df lower.CL upper.CL
+ masc    330 50.3 25.4      227      434
+ fem     431 50.4 25.8      327      534
+ star    353 50.0 25.0      250      456
+
+Results are averaged over the levels of: anaphor 
+Degrees-of-freedom method: satterthwaite 
+Confidence level used: 0.95 
+
+$contrasts
+ contrast    estimate   SE  df t.ratio p.value
+ masc - fem    -100.6 52.0 190  -1.933  0.1321
+ masc - star    -23.0 51.6 190  -0.445  0.8965
+ fem - star      77.6 51.8 190   1.498  0.2943
+
+Results are averaged over the levels of: anaphor 
+Degrees-of-freedom method: satterthwaite 
+P value adjustment: tukey method for comparing a family of 3 estimates 
+
+$emmeans
+ anaphor emmean   SE   df lower.CL upper.CL
+ M          370 45.5 17.3      274      466
+ F          373 45.6 17.4      277      469
+
+Results are averaged over the levels of: form 
+Degrees-of-freedom method: satterthwaite 
+Confidence level used: 0.95 
+
+$contrasts
+ contrast estimate   SE  df t.ratio p.value
+ M - F       -2.81 42.3 190  -0.067  0.9470
+
+Results are averaged over the levels of: form 
+Degrees-of-freedom method: satterthwaite 
+
+$emmeans
+form = masc:
+ anaphor emmean   SE   df lower.CL upper.CL
+ M          260 62.5 55.7      135      385
+ F          400 61.8 53.9      276      524
+
+form = fem:
+ anaphor emmean   SE   df lower.CL upper.CL
+ M          447 62.5 55.7      322      572
+ F          415 62.5 55.7      289      540
+
+form = star:
+ anaphor emmean   SE   df lower.CL upper.CL
+ M          403 61.2 52.1      280      526
+ F          303 62.5 55.7      178      429
+
+Degrees-of-freedom method: satterthwaite 
+Confidence level used: 0.95 
+
+$contrasts
+form = masc:
+ contrast estimate   SE  df t.ratio p.value
+ M - F      -140.2 73.2 190  -1.914  0.0572
+
+form = fem:
+ contrast estimate   SE  df t.ratio p.value
+ M - F        32.2 73.8 190   0.437  0.6627
+
+form = star:
+ contrast estimate   SE  df t.ratio p.value
+ M - F        99.5 72.8 190   1.366  0.1735
+
+Degrees-of-freedom method: satterthwaite 
+
+
+===== spill =====
+Type III Analysis of Variance Table with Satterthwaite's method
+             Sum Sq Mean Sq NumDF  DenDF F value Pr(>F)
+form         116711   58355     2 190.02  0.7494 0.4740
+anaphor       26409   26409     1 189.83  0.3392 0.5610
+form:anaphor 328112  164056     2 190.12  2.1068 0.1245
+$emmeans
+ form emmean   SE   df lower.CL upper.CL
+ masc    374 53.7 19.7      262      486
+ fem     432 53.8 19.9      319      544
+ star    412 53.5 19.5      300      524
+
+Results are averaged over the levels of: anaphor 
+Degrees-of-freedom method: satterthwaite 
+Confidence level used: 0.95 
+
+$contrasts
+ contrast    estimate   SE  df t.ratio p.value
+ masc - fem     -57.5 47.8 190  -1.204  0.4522
+ masc - star    -37.6 47.4 190  -0.794  0.7075
+ fem - star      19.9 47.6 190   0.419  0.9077
+
+Results are averaged over the levels of: anaphor 
+Degrees-of-freedom method: satterthwaite 
+P value adjustment: tukey method for comparing a family of 3 estimates 
+
+$emmeans
+ anaphor emmean   SE   df lower.CL upper.CL
+ M          395 50.0 14.9      288      501
+ F          417 50.1 15.0      310      524
+
+Results are averaged over the levels of: form 
+Degrees-of-freedom method: satterthwaite 
+Confidence level used: 0.95 
+
+$contrasts
+ contrast estimate   SE  df t.ratio p.value
+ M - F       -22.6 38.8 190  -0.582  0.5610
+
+Results are averaged over the levels of: form 
+Degrees-of-freedom method: satterthwaite 
+
+$emmeans
+form = masc:
+ anaphor emmean   SE   df lower.CL upper.CL
+ M          308 63.7 37.4      179      437
+ F          440 63.0 36.2      312      568
+
+form = fem:
+ anaphor emmean   SE   df lower.CL upper.CL
+ M          436 63.6 37.4      307      565
+ F          427 63.6 37.4      298      556
+
+form = star:
+ anaphor emmean   SE   df lower.CL upper.CL
+ M          439 62.5 35.2      312      566
+ F          384 63.7 37.4      255      513
+
+Degrees-of-freedom method: satterthwaite 
+Confidence level used: 0.95 
+
+$contrasts
+form = masc:
+ contrast estimate   SE  df t.ratio p.value
+ M - F     -131.97 67.2 190  -1.963  0.0511
+
+form = fem:
+ contrast estimate   SE  df t.ratio p.value
+ M - F        9.04 67.7 190   0.134  0.8939
+
+form = star:
+ contrast estimate   SE  df t.ratio p.value
+ M - F       55.13 66.8 190   0.825  0.4106
+
+Degrees-of-freedom method: satterthwaite 
+
