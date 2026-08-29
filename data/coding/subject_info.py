@@ -3,7 +3,6 @@ SUBJECT_INFO= {
         'list': 1,
         'gender': 'm',
         'age': 24,
-        'confused': [9, 16],    #starting from 1
         'freq': (2, 2, 4, 3),   #use_speak, use_write, perceive_speak, perceive_write
         'politik': 'Links zur Mitte',
         'exclude': []
@@ -12,7 +11,6 @@ SUBJECT_INFO= {
         'list': 2,
         'gender': 'm',
         'age': 21,
-        'confused': [1, 3, 4, 5, 6, 8, 10, 11, 12, 17],   
         'freq': (2, 2, 4, 3),
         'politik': 'Links zur Mitte',
         'exclude': []
@@ -21,7 +19,6 @@ SUBJECT_INFO= {
         'list': 3,
         'gender': 'm',
         'age': 22,
-        'confused': [5, 16],   
         'freq': (4, 5, 3, 4),
         'politik': 'Links zur Mitte',
         'exclude': []
@@ -30,7 +27,6 @@ SUBJECT_INFO= {
         'list': 4,
         'gender': 'm',
         'age': 22,
-        'confused': [1, 12, 13, 15],   
         'freq': (2, 3, 5, 5),
         'politik': 'Links',
         'exclude': []
@@ -39,7 +35,6 @@ SUBJECT_INFO= {
         'list': 5,
         'gender': 'm',
         'age': 29,
-        'confused': [2, 9, 10, 15, 17],   
         'freq': (2, 3, 2, 3),
         'politik': 'Links zur Mitte',
         'exclude': []
@@ -48,7 +43,6 @@ SUBJECT_INFO= {
         'list': 6,
         'gender': 'm',
         'age': 24,
-        'confused': [11],   
         'freq': (1, 4, 5, 4),
         'politik': 'Links zur Mitte',
         'exclude': []
@@ -57,25 +51,22 @@ SUBJECT_INFO= {
         'list': 1,
         'gender': 'f',
         'age': 29,
-        'confused': [1],   
         'freq': (4, 4, 4, 5),
         'politik': 'Links',
         'exclude': [10]
     },
-    'subject-8':{
+    'subject-8':{   #low quality data
         'list': 2,
         'gender': 'f',
         'age': 22,
-        'confused': [1, 2, 4, 6, 8, 10, 11, 13, 17],   
         'freq': (1, 3, 1, 3),
         'politik': 'Links',
-        'exclude': []
+        'exclude': [4, 9]  #too many noises, auto correction worked poorly
     },
     'subject-9':{    # might need to exclude
         'list': 3,
         'gender': 'm',
         'age': 28,
-        'confused': [2, 5, 7, 8, 10, 15],   
         'freq': (2, 3, 2, 3),
         'politik': 'Links',
         'exclude': []
@@ -84,8 +75,7 @@ SUBJECT_INFO= {
         'list': 4,
         'gender': 'm',
         'age': 23,
-        'confused': [4, 8, 9, 10, 16],   
-        'freq': (3, 2, 4, None),    #NOTE: missing
+        'freq': (3, 2, 4, 3),   
         'politik': 'Links',
         'exclude': []
     },
@@ -93,7 +83,6 @@ SUBJECT_INFO= {
         'list': 5,
         'gender': 'm',
         'age': 24,
-        'confused': [6, 8, 11, 13, 16],   
         'freq': (2, 1, 3, 4),
         'politik': 'Links zur Mitte',
         'exclude': []
@@ -102,7 +91,6 @@ SUBJECT_INFO= {
         'list': 6,
         'gender': 'f',
         'age': 42,
-        'confused': [1, 3, 7, 9, 15, 16, 17],   
         'freq': (3, 4, 2, 4),
         'politik': 'Links zur Mitte',
         'exclude': []
@@ -111,7 +99,6 @@ SUBJECT_INFO= {
         'list': 3,  
         'gender': 'f',
         'age': 26,
-        'confused': [3],
         'freq': (2, 4, 4, 2),    
         'politik': 'Mitte',
         'exclude': [10, 11, 12, 13, 14, 16]     #poor data quality
@@ -119,8 +106,7 @@ SUBJECT_INFO= {
     'subject-14':{
         'list': 1,  #repeat
         'gender': 'm',
-        'age': None,  #missing
-        'confused': [1],   
+        'age': 20, 
         'freq': (3, 2, 3, 4),
         'exclude': [] #16 noted during the experiment
     }
