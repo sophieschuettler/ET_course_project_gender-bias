@@ -6,7 +6,7 @@
 **Semester:** *Summer semester 2026*
 
 ## Project Description
-> The main goal of the experiment is to find out whether different forms of German role nouns (masculine, feminine, gender-inclusive) elict a gender bias. Eye-tracking is used in this project to examine the reading >behaviour while reading differnt role noun forms with male or female anaphor refering to that role noun. To measure their reading behaviour on the role noun and anaphor measures such as fixation times, go past time and >regressions is used. In detail the project investigates whether the male roule noun creates a stronger male bias, femine role noun creates a female bias and whether the gender-inclusive star form creates no bias.
+> The main goal of the experiment is to find out whether different forms of German role nouns (masculine, feminine, gender-inclusive) elict a gender bias. Eye-tracking is used in this project to examine the reading behaviour while reading differnt role noun forms with male or female anaphor refering to that role noun. To measure their reading behaviour on the role noun and anaphor measures such as fixation times, go past time and regressions is used. In detail the project investigates whether the male roule noun creates a stronger male bias, femine role noun creates a female bias and whether the gender-inclusive star form creates no bias.
 
 ## Instruction for a new student
 >If a fellow student wants to reproduce all your results. What scripts, in which order, with which data need to be run?
