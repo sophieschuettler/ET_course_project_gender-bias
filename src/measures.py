@@ -1,5 +1,6 @@
 import pandas as pd
 from itertools import islice
+import re
 
 from eyekit.text import InterestArea
 from eyekit.measure import number_of_fixations, initial_fixation_duration, total_fixation_duration, go_past_duration, number_of_regressions_in
@@ -24,8 +25,7 @@ class BoxAOI(InterestArea):
 
 def make_interest_area(aoi_data, label, right_to_left=False):
     '''
-    Return a BoxAOI. Accepts an existing InterestArea (passed through) or an
-    (x, y, w, h) tuple/list with (x, y) = top-left.
+    Return a BoxAOI. Accepts an existing InterestArea (passed through) or (x, y, w, h) tuple/list with (x, y) = top-left.
     '''
     if isinstance(aoi_data, InterestArea):
         return aoi_data
@@ -60,7 +60,10 @@ def fixation_measures(seqs, aois, exclusion, n_areas=3, right_to_left=False):
     return pd.DataFrame(rows)
 
 
-def process_all_subjects(events, seqs, aois, subject_info):
+def process_all_subjects(events, seqs, aois, subject_info, response, condition_map):
+    '''
+    output a big big df containing all needed info from measurements as well as questionniares
+    '''
     all_subject_dfs = []
     for subj_id, seqs_subj in seqs.items():            
         info = subject_info[subj_id]
@@ -69,7 +72,27 @@ def process_all_subjects(events, seqs, aois, subject_info):
         df_subj = fixation_measures(seqs_subj, aois[subj_id], exclusions)   
 
         df_subj["subject"] = subj_id
-        events_subj = events[subj_id]                   
+        events_subj = events[subj_id].reset_index(drop=True)        
+
+        rn = events_subj["RN"].str.replace(r'</?RN>', '', regex=True) 
+        an = events_subj["AN"].str.replace(r'</?AN>', '', regex=True)            
+        df_subj["RN"] = df_subj["trial_id"].map(rn)
+        df_subj["AN"] = df_subj["trial_id"].map(an)
         df_subj["Code"] = df_subj["trial_id"].map(events_subj["Code"]) 
+
+        resp = response.loc[subj_id]                                   
+        df_subj["confusion"]      = df_subj["trial_id"].map(resp["confusion"])
+        df_subj["correctness_rn"] = df_subj["trial_id"].map(resp["correctness_rn"])
+        df_subj["correctness_an"] = df_subj["trial_id"].map(resp["correctness_an"])
+
+        df_subj["exposure_use"] = subject_info[subj_id]["exposure_use"]
+        df_subj["exposure_percept"] = subject_info[subj_id]["exposure_percept"]
+
         all_subject_dfs.append(df_subj)
-    return pd.concat(all_subject_dfs, ignore_index=True)
+        
+        results = pd.concat(all_subject_dfs, ignore_index=True)
+        results = results.merge(pd.DataFrame(condition_map).T, left_on='Code', right_index=True, how='left')
+
+    return results
+
+
