@@ -133,6 +133,6 @@ if __name__ == "__main__":
 
     splitted_text = split_text(event_data_selected, subject_id=subject_id, overrides_file=overrides_file)
 
-    output_path = f'data/interim/splitted_sentences/splitted_sentences_SUBJ{subject_id}.csv'
+    output_path = f'data/interim/splitted_sentences/subject-{subject_id}.csv'
     splitted_text.to_csv(output_path, index=False)
     print(f"Successfully processed Subject {subject_id} and saved to {output_path}")
