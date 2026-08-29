@@ -6,8 +6,27 @@ from src.visualization import plot_chunk_classification, plot_fixation_distribut
 import config
 import warnings
 
+''' ----------------------------------------------------------
+To use this script, call from the root folder of the repo:
+    process individual subject:
+        python -m scripts/02_fixation_detection.py --p subject-X
+    process all the subjects:
+        python -m scripts/02_fixation_detection.py
 
-#NOTE: consider log the number of fixations and saccades found later
+Quality control plots are saved in: 
+    /plots/quality_control/02_fixation/
+
+Fixations are saved in:
+    /data/interim/fixations/
+
+Note of usage:
+    - fixation and saccade plots are only generate and saved
+        for the quality control subject (default subject-1).
+        To see plotting for other subject, change QC_SUBJECT in config.py
+    - files required from the previous steps:
+        - cleaned et data from step01
+--------------------------------------------------------------'''
+
 def run(pid):
     data   = io.load_checkpoint("clean_samples", pid)
     fix_c  = config.FIX_CRITERIA['cleaning']['fix_deg_dur']

@@ -5,8 +5,21 @@ from src.conversion import gaze_conversion
 from src.visualization import plot_gaze_across_time
 import config
 
+''' ----------------------------------------------------------
+To use this script, call from the root folder of the repo:
+    process individual subject:
+        python -m scripts/01_clean.py --p subject-X
+    process all the subjects:
+        python -m scripts/01_clean.py
 
-def run(pid):           #NOTE: need to add the preprocessing for event data
+Quality control plots are saved in: 
+    /plots/quality_control/01_clean/
+
+Stats are saved in:
+    /stats/01_clean/
+--------------------------------------------------------------'''
+
+def run(pid):           
     # --------- gaze data -----------
     raw = io.load_raw_et(pid)
 
