@@ -6,10 +6,16 @@
 **Semester:** *Summer semester 2026*
 
 ## Project Description
-> Please provide a short description of the main goals. 
+> The main goal of the experiment is to find out whether different forms of German role nouns (masculine, feminine, gender-inclusive) elict a gender bias. Eye-tracking is used in this project to examine the reading >behaviour while reading differnt role noun forms with male or female anaphor refering to that role noun. To measure their reading behaviour on the role noun and anaphor measures such as fixation times, go past time and >regressions is used. In detail the project investigates whether the male roule noun creates a stronger male bias, femine role noun creates a female bias and whether the gender-inclusive star form creates no bias.
 
 ## Instruction for a new student
 >If a fellow student wants to reproduce all your results. What scripts, in which order, with which data need to be run?
+>Backend: psychopy
+>Change screen to 2 in backend setting
+>Calibration tracker type: openGaze
+>Monitor size: 17inch
+>Default monitor resolution: 1920 x 1080
+>Remember to set the resolution of MONITOR1 if it is not 1920x1080 already
 >
 >Be as specific as possible.
 >
@@ -23,10 +29,10 @@
 │
 ├── report           <- Report PDF
 |
-├── presentation     <- Final presentation slides (PDFs; optionally also .pptx etc)
+├── presentation     <- Final presentation slides (PDF and .pptx)
 |
 ├── _research        <- WIP scripts, code, notes, comments,
-│                       to-dos and anything in a preliminary state.
+│              
 │
 ├── plots            <- All exported plots go here, best in date folders.
 |                       Note that to ensure reproducibility it is required that all plots can be
@@ -44,6 +50,8 @@
 ├── data             <- **If they have a reasonable file size**
 |   ├── raw          <- Raw eye-tracking data
 |   ├── preprocessed <- Data resulting from preprocessing
+| 
+├── notebooks        <- jupyter notebooks to plot data for visualization for presentation and report 
 |
 ├── README.md        <- Top-level README. Fellow students need to be able to
 |                       reproduce your project. Think about them!
