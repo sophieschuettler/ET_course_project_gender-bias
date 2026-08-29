@@ -1,13 +1,13 @@
 {
   "stage": "fixations_corrected",
   "pid": "subject-5",
-  "git": "0f65c79",
-  "when": "2026-08-23T21:03:34.733302",
+  "git": "3f8826e",
+  "when": "2026-08-25T17:57:36.354111",
   "n_rows": 1510,
   "params": {
     "methods": [
       "chain",
-      "merge",
+      "regress",
       "cluster"
     ]
   }
