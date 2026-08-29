@@ -5,6 +5,13 @@ import pandas as pd
 import os.path as path
 import yaml
 
+
+'''----------------------
+to use, call from the root folder:
+    python -m src.text_processing
+    -> enter subject id when prompted
+------------------------'''
+
 def find_placement(row):
     '''
     "Replay OpenSesame layout. LETTER_W is calibrated per-trial from the logged RN AOI so it matches the actual rendered glyph advance.
@@ -106,7 +113,7 @@ def split_text(data, subject_id, overrides_file):
 
 
 if __name__ == "__main__":
-    datapath = '../data/raw'
+    datapath = 'data/raw'
     overrides_file = 'line_correction.yaml'
     subject_input = input('Enter the subject number to be processed: ').strip()
 
@@ -117,7 +124,7 @@ if __name__ == "__main__":
     except ValueError:
         raise ValueError("Input must be an integer between 1 and 14.")
 
-    list_id = SUBJECT_INFO[f'subj{subject_id}']['list']
+    list_id = SUBJECT_INFO[f'subject-{subject_id}']['list']
 
     raw_file = path.join(datapath, f'subject-{subject_id}.csv')
     events_data = pd.read_csv(raw_file, sep=',', header=0)
@@ -126,6 +133,6 @@ if __name__ == "__main__":
 
     splitted_text = split_text(event_data_selected, subject_id=subject_id, overrides_file=overrides_file)
 
-    output_path = f'../data/splitted_sentences/splitted_sentences_SUBJ{subject_id}.csv'
+    output_path = f'data/interim/splitted_sentences/splitted_sentences_SUBJ{subject_id}.csv'
     splitted_text.to_csv(output_path, index=False)
     print(f"Successfully processed Subject {subject_id} and saved to {output_path}")
