@@ -1,3 +1,4 @@
+from matplotlib.cm import Blues
 import seaborn as sns
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle
@@ -19,6 +20,8 @@ sys.modules['nslr_hmm'] = nslr_stub
 sys.modules['nslr'] = types.ModuleType('nslr')
 
 from cateyes import continuous_to_discrete, plot_segmentation
+
+
 
 # -------------- for cleaning ------------------
 
@@ -93,74 +96,55 @@ def plot_gaze_across_time(data, axis, subject, bar=True, note="", show=True, sav
     return fig, ax
 
 
-
 # ------------ for accuracy and precision ------------
-def plot_accuracy_precision(df, show=True, save_path=None):
-    """Plots accuracy and precision metrics across trials as line plots to visualize drift or noise over time."""
-    # Ensure trials are ordered sequentially
+def plot_accuracy_precision(df, window, subject, show=True, save_path=None):
+    """Plots accuracy and precision metrics across trials."""
     df = df.sort_values("SENTENCE_INDEX").reset_index(drop=True)
 
-    fig, axes = plt.subplots(2, 1, figsize=(10, 7), sharex=True)
+    fig, ax1 = plt.subplots(1, 1, figsize=(10, 7))
 
-    # 1. Accuracy across trials
-    axes[0].plot(
-        df["SENTENCE_INDEX"],
-        df["accuracy_px"],
-        marker="o",
-        markersize=4,
-        color="crimson",
-        linestyle="-",
-        linewidth=1.5,
-        label="Accuracy (Offset from Target)",
+    # 1. Accuracy (Left Y-Axis)
+    ax1.plot(
+        df["SENTENCE_INDEX"], df["accuracy_px"],
+        marker="o", markersize=4, color="#1f77b4", linestyle="-", linewidth=1.5,
+        label="Accuracy"
     )
-    axes[0].set_ylabel("Accuracy (px)")
-    axes[0].set_title("Fixation Cross Accuracy Across Trials")
-    axes[0].grid(True, linestyle="--", alpha=0.5)
-    axes[0].legend(loc="upper right")
+    ax1.set_xlabel("Sentence Index")
+    ax1.set_ylabel("Accuracy (px)", color="#1f77b4")
+    ax1.tick_params(axis='y', labelcolor="#1f77b4")
+    ax1.grid(True, linestyle="--", alpha=0.5)
 
-    # 2. Precision (RMS & SD) across trials
-    axes[1].plot(
-        df["SENTENCE_INDEX"],
-        df["precision_rms_px"],
-        marker="s",
-        markersize=4,
-        color="royalblue",
-        linestyle="-",
-        linewidth=1.5,
-        label="Precision RMS (Sample-to-Sample)",
+    ax2 = ax1.twinx() 
+    
+    # 2. Precision (Right Y-Axis)
+    ax2.plot(
+        df["SENTENCE_INDEX"], df["precision_px"],
+        marker="s", markersize=4, color="#e07a5f", linestyle="-", linewidth=1.5,
+        label="Precision"
     )
-    axes[1].plot(
-        df["SENTENCE_INDEX"],
-        df["precision_sd_px"],
-        marker="^",
-        markersize=4,
-        color="darkorange",
-        linestyle="--",
-        linewidth=1.5,
-        label="Precision SD (Dispersion)",
-    )
-    axes[1].set_xlabel("Sentence Index / Trial Number")
-    axes[1].set_ylabel("Precision (px)")
-    axes[1].set_title("Fixation Cross Precision Across Trials")
-    axes[1].grid(True, linestyle="--", alpha=0.5)
-    axes[1].legend(loc="upper right")
+    ax2.set_ylabel("Precision (px)", color="#e07a5f")
+    ax2.tick_params(axis='y', labelcolor="#e07a5f")
+
+    plt.title(f"Accuracy & Precision Across Trials (last {window} ms) - {subject}")
+    
+    lines_1, labels_1 = ax1.get_legend_handles_labels()
+    lines_2, labels_2 = ax2.get_legend_handles_labels()
+    ax1.legend(lines_1 + lines_2, labels_1 + labels_2, loc="upper right")
 
     plt.xticks(df["SENTENCE_INDEX"])
-
     plt.tight_layout()
+
+    if save_path:
+        fig.savefig(save_path, dpi=300, bbox_inches="tight")
 
     if show:
         plt.show()
     else:
         plt.close(fig)
 
-    if save_path:
-        fig.savefig(save_path, dpi=300, bbox_inches="tight")
-
 
 
 # ------------ for fixation detection ------------
-
 def plot_chunk_classification(
     data, 
     window, 
@@ -239,7 +223,7 @@ def plot_fixation_distribution(
     durations = [(group['TIME'].iloc[-1] - group['TIME'].iloc[0]) * 1000 + (1000 / freq) for group in fix_groups]
 
     fig, ax = plt.subplots(figsize=(8, 5))
-    ax.hist(durations, bins=30, range=(0, 600))
+    ax.hist(durations, bins=30, range=(0, 800))
         
     ax.set_title(f"Distribution of Fixation Duration by {class_method} (clean={clean})")
     ax.set_xlabel("Time (ms)")
@@ -326,11 +310,8 @@ def plot_main_sequence(
 
 
 
+# ----------------- plot for gazepazh ----------------
 def plot_gazepath_eyekit(text_block, aoi, seq, res, save_path=None):
-    '''
-    input and output for one single trial
-    '''
-
     img = eyekit.vis.Image(res[0], res[1])
     img.draw_text_block(text_block)
     img.draw_fixation_sequence(seq, color='blue')
@@ -345,25 +326,21 @@ def plot_gazepath_eyekit(text_block, aoi, seq, res, save_path=None):
     return img
 
 
-
-def plot_measure(results, measure, condition_map, regions=('RN', 'AN', 'SPILL'), balanced=False, show=True, save_path=None):
+# ------------------- plot for analysis ---------------
+def plot_measure(results, measure, condition_map, regions=('rn', 'an', 'spill'), balanced=False, show=True, save_path=None):
     conditions  = list(condition_map.keys()) #['C1', 'C2', 'C3', 'C4', 'C5', 'C6']
-    labels = list(condition_map.values()) #['masc+M\n(match)', 'masc+F\n(mismatch)', 'fem+M\n(mismatch)', 'fem+F\n(match)', 'star+M', 'star+F']
-              
-    # Standardize region casing
-    results['region'] = results['aoi_type'].str.upper()
-    
-    # Force missing data to 0
+    labels = formatted_list = [f"{v['form']}+{v['anaphor']}({v['match']})" for v in condition_map.values()]
+               
     results[measure] = results[measure].fillna(0)
     
-    # Subject-level means first
-    subj_means = results.groupby(['subject', 'Code', 'region'])[measure].mean().reset_index()
+    # Subject-level means
+    subj_means = results.groupby(['subject', 'Code', 'aoi_type'])[measure].mean().reset_index()
     
     # Grand Means and Standard Errors across subjects
-    piv = subj_means.pivot_table(index='Code', columns='region', values=measure, aggfunc='mean').reindex(conditions)
-    err = subj_means.pivot_table(index='Code', columns='region', values=measure, aggfunc='sem').reindex(conditions)
+    piv = subj_means.pivot_table(index='Code', columns='aoi_type', values=measure, aggfunc='mean').reindex(conditions)
+    err = subj_means.pivot_table(index='Code', columns='aoi_type', values=measure, aggfunc='sem').reindex(conditions)
 
-    rcolors = {'RN': '#6a8caf', 'AN': '#c94c4c', 'SPILL': '#e0a458'}
+    rcolors = {'rn': '#1f77b4', 'an': '#e07a5f', 'spill': '#f2cc8f'}
     x = np.arange(len(conditions))
     w = 0.8 / len(regions)
     
@@ -384,11 +361,11 @@ def plot_measure(results, measure, condition_map, regions=('RN', 'AN', 'SPILL'),
     ax.set_xticklabels(labels, fontsize=9)
     
     ylab_map = {
-        'first_pass': 'first-pass fixation (ms)',
-        'total': 'total fixation (ms)',
-        'go_past': 'go-past (ms)',
-        'regression_in': 'regression-in.',
-        'n_fixations': 'number of fixations'
+        'first_pass_duration': 'first-pass fixation (ms)',
+        'total_duration': 'total fixation (ms)',
+        'go_past_duration': 'go-past (ms)',
+        'regressions_in': 'regression-in (count)',
+        'n_fixations': 'fixations (count)'
     }
     
     ylab = ylab_map.get(measure, measure)
@@ -406,3 +383,87 @@ def plot_measure(results, measure, condition_map, regions=('RN', 'AN', 'SPILL'),
         plt.show()
     else:
         plt.close(fig)
+
+
+def _measure_table_heatmap(results, measure, region, anaphor_order=("M", "F"), form_order=("masc", "fem", "star")):
+    '''
+    Anaphor (rows) x form (cols) table for one measure + region.
+    '''
+    df = results[results["aoi_type"] == region]
+    subj = (df.groupby(["subject", "anaphor", "form"], observed=True)[measure].mean().reset_index())                  
+    agg = subj.groupby(["anaphor", "form"], observed=True)[measure].agg('mean')
+    return (agg.unstack("form").reindex(index=list(anaphor_order), columns=list(form_order)))
+
+
+def _confusion_table_heatmap(results, anaphor_order=("M", "F"), form_order=("masc", "fem", "star")):
+    trials = results.drop_duplicates(["subject", "trial_id"])         
+    subj = (trials.groupby(["subject", "anaphor", "form"], observed=True)["confusion"].mean().reset_index())                               
+    agg = subj.groupby(["anaphor", "form"], observed=True)["confusion"].agg("mean")
+    return agg.unstack("form").reindex(index=list(anaphor_order), columns=list(form_order))
+
+
+def plot_result_heatmap(results, measure=None, region=None, balanced=False, show=True, save_path=None):
+    if measure:
+        if region == None:
+            raise Exception("region is required for the heapmap for results.")
+        table = _measure_table_heatmap(results, measure, region)
+    else:
+        table = _confusion_table_heatmap(results)
+
+    fig, ax = plt.subplots(figsize=(6, 4))
+    im = ax.imshow(table.values, cmap='Blues', aspect="auto")
+    fig.colorbar(im, ax=ax)
+
+    tag = f'{measure}({region})' if measure else "confusion"
+    ax.set_xticks(range(table.shape[1])); ax.set_xticklabels(table.columns)
+    ax.set_yticks(range(table.shape[0])); ax.set_yticklabels(table.index)
+    ax.set_xlabel("role-noun form"); ax.set_ylabel("anaphor"); ax.set_title(f'{tag} (balanced={balanced})')
+
+    plt.tight_layout()
+    if save_path: fig.savefig(save_path, dpi=300, bbox_inches="tight")
+    plt.show() if show else plt.close(fig)
+    return fig, ax
+
+
+def plot_correctness(results, condition_map, field="correctness_an", show=True, save_path=None):
+    trials = results.drop_duplicates(["subject", "trial_id"])
+
+    if field == "correctness_an":
+        order = ("correct", "wrong")
+    elif field == "correctness_rn":
+        order = ("correct", "wrong", "wrong_gender")
+
+    subj_props = (trials.groupby(["subject", "Code"])[field]       
+                        .value_counts(normalize=True)
+                        .unstack(field, fill_value=0))
+    
+    grand = (subj_props.groupby("Code").mean()
+                       .reindex(columns=order)
+                       .fillna(0))
+
+    codes = list(condition_map.keys())
+    grand = grand.reindex(codes)
+    labels = formatted_list = [f"{v['form']}+{v['anaphor']}" for v in condition_map.values()]
+
+    colors={"correct": "#1f77b4", "wrong": "#e07a5f", "wrong_gender": "#f2cc8f"} 
+    fig, ax = plt.subplots(figsize=(9, 5))
+    bottom = np.zeros(len(grand))
+    for outcome in order:
+        ax.bar(range(len(grand)), grand[outcome], bottom=bottom,
+               label=outcome, color=colors.get(outcome, "0.5"), edgecolor="0.3")
+        bottom += grand[outcome].values
+
+    ax.spines['top'].set_visible(False)
+    ax.spines['right'].set_visible(False)
+    ax.set_xticks(range(len(grand)))
+    ax.set_xticklabels(labels)
+    ax.set_ylabel("proportion of trials")
+    ax.set_ylim(0, 1)
+    ax.set_title(f"{field} by condition")
+    ax.legend(title="response", bbox_to_anchor=(1.02, 1), loc="upper left")
+
+    plt.tight_layout()
+    if save_path:
+        fig.savefig(save_path, dpi=300, bbox_inches="tight")
+    plt.show() if show else plt.close(fig)
+    return fig, ax
