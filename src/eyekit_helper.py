@@ -3,6 +3,9 @@ import ast
 import eyekit
 
 def create_text_block(text, text_start, res, font_size, line_space):
+    '''
+    build a dictionary for Textblock object from splitted sentences
+    '''
     text['Lines'] = text['Lines'].apply(ast.literal_eval)
     text['y_top'] = text['y_top'].apply(ast.literal_eval)
 
@@ -29,6 +32,9 @@ def create_text_block(text, text_start, res, font_size, line_space):
 
 
 def create_aoi_boxes(data, res, font_size):
+    '''
+    build a dictionary for AOI boxes coordinates
+    '''
     aoi = {}
 
     for i, row in data.iterrows():
@@ -63,6 +69,9 @@ def create_aoi_boxes(data, res, font_size):
 
 
 def create_seq(fixations, truncate=True):
+    '''
+    create a dictionary of seq objects for eyekit
+    '''
     seq = {}
     for sent_i, trial in fixations.groupby('Sentence_i', sort=True):
         if truncate:
@@ -77,7 +86,9 @@ def create_seq(fixations, truncate=True):
 
 
 def correct_to_df(fixations, seq, text_blocks, methods):
-    ''' correct each trial and put it and the stats in the df'''
+    ''' 
+    correct for the vertical drift in each trial and put it and the stats in the df (no longer seq object) (for easier storage)
+    '''
     out = []
     for i in seq:
         trial = (fixations[(fixations.Sentence_i == i) & (fixations.keep == True)].sort_values("Start").copy())
@@ -93,7 +104,9 @@ def correct_to_df(fixations, seq, text_blocks, methods):
 
 
 def seq_from_df(corrected, x_col='X_px', y_col='Y_snapped'):
-    '''rebuild {trial: FixationSequence} from a corrected fixations table.'''
+    '''
+    rebuild {trial: FixationSequence} from a corrected fixations dataframe to use in eyekit
+    '''
     seq = {}
     for i, t in corrected.groupby('Sentence_i', sort=True):
         t = t.sort_values('Start')
