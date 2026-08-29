@@ -1,11 +1,20 @@
 import pandas as pd
 import numpy as np
+import sys, types
+nslr_stub = types.ModuleType('nslr_hmm')
+nslr_stub.FIXATION = 1
+nslr_stub.SACCADE = 2
+nslr_stub.PSO = 3
+nslr_stub.SMOOTH_PURSUIT = 4
+sys.modules['nslr_hmm'] = nslr_stub
+sys.modules['nslr'] = types.ModuleType('nslr')
 
+from cateyes import pixel_to_degree
 
 
 def compute_accuracy_precision(data, cross_pos, last_ms=100):
     '''
-    - data: the raw samples before the trigger of each sentences
+    data: the raw samples before the trigger of each sentences
     '''
     cross_x, cross_y = cross_pos
 
@@ -13,7 +22,6 @@ def compute_accuracy_precision(data, cross_pos, last_ms=100):
     
     for i, row in data.groupby('SENTENCE_INDEX'):
         row = row.dropna(subset=['X_px_center', 'Y_px_center'])
-        #row = row[row['classes_i2mc_clean'] == 'Fixation'] #NOTE: not sure if we should use fixation only or just raw samples
         trigger = row['TIME'].iloc[-1]
         row = row[row['TIME'] >= trigger - last_ms/1000]
 
@@ -23,22 +31,17 @@ def compute_accuracy_precision(data, cross_pos, last_ms=100):
         acc = float(np.hypot(cx - cross_x, cy - cross_y))
 
         step = np.hypot(np.diff(x), np.diff(y))
-        rms = float(np.sqrt(np.mean(step**2))) if len(step) else np.nan
+        prec = float(np.sqrt(np.mean(step**2))) if len(step) else np.nan
 
-        dev = np.hypot(x - cx, y - cy)
-        sd = float(np.sqrt(np.mean(dev**2)))
+        derived.append((i, acc, prec, len(x), float(cx), float(cy)))
 
-        derived.append((i, acc, rms, sd, len(x), float(cx), float(cy)))
+        derived_df = pd.DataFrame(derived, columns=['SENTENCE_INDEX', "accuracy_px", "precision_px", "n_samples", "cross_x_px", "cross_y_px"])
 
-    return pd.DataFrame(
-        derived,
-        columns=['SENTENCE_INDEX', "accuracy_px", "precision_rms_px",
-                "precision_sd_px", "n_samples", "cross_x_px", "cross_y_px"],
-    )
+    return derived_df
 
 def summarize_acc_prec(acc_prec):
     '''
     mean acc and prec report
     '''
-    cols = ["accuracy_px", "precision_rms_px", "precision_sd_px"]
+    cols = ["accuracy_px", "precision_px"]
     return acc_prec[cols].mean().rename("mean")
