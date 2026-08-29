@@ -15,8 +15,10 @@ from cateyes import classify_velocity, classify_dispersion
 
 
 def detect_with(data, method, fix_c, sacc_c, res, dist, freq, screen_size, threshold):
-    segments, classes = fixation_detection(data, method, res, dist,
-            freq, screen_size, threshold)      
+    '''
+    launcher for fixation deteciton using the method of choice and cleaning
+    '''
+    segments, classes = fixation_detection(data, method, res, dist, freq, screen_size, threshold)      
     data[f'classes_{method}'] = classes
     data[f'segments_{method}'] = segments
 
@@ -53,19 +55,18 @@ def fix_detect_I2MC(data, res, dist, freq, screen_size):
 
 
 def i2mc_to_cateyes(fixations, n_samples):
-    """
+    '''
     Convert I2MC fixation output into cateyes' continuous (segments, classes) format.
 
     fixations : the fix dict from I2MC (uses 'start' and 'end', inclusive indices)
     n_samples : total samples in the trial == len(data)
-    """
+    '''
     classes = np.full(n_samples, "Saccade", dtype=object)
 
     # paint fixations (I2MC end index is inclusive -> +1 in the slice)
     for s, e in zip(fixations['start'], fixations['end']):
         classes[int(s):int(e) + 1] = "Fixation"
 
-    # segment IDs: bump the counter at every label change
     change = np.empty(n_samples, dtype=bool)
     change[0] = False
     change[1:] = classes[1:] != classes[:-1]
@@ -120,7 +121,7 @@ def fixation_merge_clean(data, cols, freq, criteria):
         spatial_gap_deg = np.sqrt((group_start_x - last_x)**2 + (group_start_y - last_y)**2)
         
         # Tmin = 2.2 * Amin + 27
-        merge_time_gap = 2.2 * merge_degree_gap + 27  # see reference: fixation classification: how to merge and select fixation candidates
+        merge_time_gap = 2.2 * merge_degree_gap + 27  
         if time_gap_ms < merge_time_gap and spatial_gap_deg < merge_degree_gap:
             current_end_t = group_end       
             last_x = group_end_x          
@@ -144,8 +145,8 @@ def fixation_merge_clean(data, cols, freq, criteria):
 
     #print(f"Total Valid Fixations Found: {len(valid_fixation_blocks)}")
 
-    # Demote all old, noisy fixations to 'Unclassified'
-    df.loc[df[ori_classes] == 'Fixation', new_classes] = 'None' #NOTE: not sure whether to put saccade or None here
+    # remark all old, noisy fixations as 'None'
+    df.loc[df[ori_classes] == 'Fixation', new_classes] = 'None' 
 
     # Promote our validated blocks back to 'Fixation' 
     for start_t, end_t in valid_fixation_blocks:
@@ -176,13 +177,12 @@ def saccade_clean(data, cols, min_samples):
         event_type='first'
     )
 
-    # 2. Identify segment IDs that are Saccades AND below min_samples
+    # Identify segment IDs that are Saccades AND below min_samples
     short_saccade_ids = grouped[
         (grouped['event_type'] == 'Saccade') & 
         (grouped['length'] < min_samples)
     ].index
 
-    # relable
     df.loc[df[segments].isin(short_saccade_ids), classes] = 'None'
 
     return df
