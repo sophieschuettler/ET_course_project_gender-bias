@@ -3,7 +3,7 @@ d <- read.csv("data/processed/balanced_12/analysis_results.csv")
 d$form    <- factor(d$form,    levels=c("masc","fem","star"))
 d$anaphor <- factor(d$anaphor, levels=c("M","F"))
 
-measures <- c("first_pass_duration", "go_past_duration", "regressions_in", "total_duration") 
+measures <- c("initial_fixation_duration", "go_past_duration", "regressions_in", "total_fixation_duration") 
 regions  <- c("rn", "an", "spill")
 
 sink("data/stats/analysis/stats_lmm.txt")

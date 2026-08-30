@@ -43,7 +43,7 @@ def run(balanced=False):
     io.save_output(results, tag,"analysis_results.csv")
 
     for measure in config.MEASURES:
-        if measure in ["first_pass_duration","go_past_duration"]:
+        if measure in ["initial_fixation_duration","go_past_duration"]:
             plot_measure(results, measure, condition_map=config.CONDITION_MAP, balanced=balanced, show=False, regions=('an', 'spill'),
                                  save_path=io.grand_fig_path(f'{tag}/measure/{measure}'))  
         else:

@@ -1,5 +1,5 @@
 
-=== First-pass (masc form): anaphor M-F diff vs exposure ===
+=== Initial-fixation (masc form): anaphor M-F diff vs exposure ===
 -- self-use --
 
 	Pearson's product-moment correlation

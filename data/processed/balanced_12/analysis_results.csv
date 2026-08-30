@@ -1,4 +1,4 @@
-trial_id,aoi_type,n_fixations,first_pass_duration,total_duration,go_past_duration,regressions_in,subject,RN,AN,Code,confusion,correctness_rn,correctness_an,exposure_use,exposure_percept,form,anaphor,match
+trial_id,aoi_type,n_fixations,initial_fixation_duration,total_fixation_duration,go_past_duration,regressions_in,subject,RN,AN,Code,confusion,correctness_rn,correctness_an,exposure_use,exposure_percept,form,anaphor,match
 0,rn,4,235,730,11243,0,subject-1,Krankenschwestern,Frauen,C4,False,correct,wrong,2.0,3.5,fem,F,match
 0,an,3,194,877,194,0,subject-1,Krankenschwestern,Frauen,C4,False,correct,wrong,2.0,3.5,fem,F,match
 0,spill,1,168,168,168,0,subject-1,Krankenschwestern,Frauen,C4,False,correct,wrong,2.0,3.5,fem,F,match

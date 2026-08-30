@@ -1,6 +1,6 @@
 
 ##################################################
-             MEASURE: first_pass_duration                   
+             MEASURE: initial_fixation_duration                   
 ##################################################
 
 ===== rn =====
@@ -711,7 +711,7 @@ Degrees-of-freedom method: satterthwaite
 
 
 ##################################################
-             MEASURE: total_duration                   
+             MEASURE: total_fixation_duration                   
 ##################################################
 
 ===== rn =====

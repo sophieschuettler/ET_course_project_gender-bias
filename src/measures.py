@@ -49,13 +49,13 @@ def fixation_measures(seqs, aois, exclusion, n_areas=3, right_to_left=False):
             aoi = make_interest_area(raw_aoi, label=aoi_type,
                                      right_to_left=right_to_left)
             rows.append({
-                "trial_id":            trial_id,
-                "aoi_type":            aoi_type,
-                "n_fixations":         number_of_fixations(aoi, seq),
-                "first_pass_duration": initial_fixation_duration(aoi, seq),
-                "total_duration":      total_fixation_duration(aoi, seq),
-                "go_past_duration":    go_past_duration(aoi, seq),
-                "regressions_in":      number_of_regressions_in(aoi, seq),
+                "trial_id": trial_id,
+                "aoi_type": aoi_type,
+                "n_fixations": number_of_fixations(aoi, seq),
+                "initial_fixation_duration": initial_fixation_duration(aoi, seq),
+                "total_fixation_duration": total_fixation_duration(aoi, seq),
+                "go_past_duration": go_past_duration(aoi, seq),
+                "regressions_in": number_of_regressions_in(aoi, seq),
             })
     return pd.DataFrame(rows)
 

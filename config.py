@@ -70,8 +70,8 @@ CONDITION_MAP = {
 # --------- Measures -------------
 MEASURES = [
      "n_fixations",
-     "first_pass_duration",
-     "total_duration",
+     "initial_fixation_duration",
+     "total_fixation_duration",
      "go_past_duration",
      "regressions_in"
 ]

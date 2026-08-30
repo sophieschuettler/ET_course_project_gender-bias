@@ -18,14 +18,14 @@ subject_diff <- function(d, measure, form_lvl) {
 
 exposure <- unique(d[, c("subject","exposure_use","exposure_percept")])
 
-# --- first-pass, masculine form (the male-bias effect lived here) ---
-fp <- merge(subject_diff(d, "first_pass_duration", "masc"), exposure, by="subject")
+# --- initial fixation, masculine form (the male-bias effect lived here) ---
+fp <- merge(subject_diff(d, "initial_fixation_duration", "masc"), exposure, by="subject")
 # --- go-past, star form (the star asymmetry lived here) ---
 gp <- merge(subject_diff(d, "go_past_duration",   "star"), exposure, by="subject")
 
 sink("data/stats/analysis/stats_correlation.txt")
 
-cat("\n=== First-pass (masc form): anaphor M-F diff vs exposure ===\n")
+cat("\n=== Initial-fixation (masc form): anaphor M-F diff vs exposure ===\n")
 cat("-- self-use --\n");    print(cor.test(fp$exposure_use,     fp$diff))
 cat("-- perceived --\n");   print(cor.test(fp$exposure_percept, fp$diff))
 
@@ -39,7 +39,7 @@ sink()
 png("plots/analysis/balanced_12/stats/corr_use.png", width=1000, height=500)
 par(mfrow=c(1,2))
 plot(fp$exposure_use, fp$diff, pch=19,
-     xlab="Self-use Frequency of Gender Inclusive Language", ylab="First-pass M-F (ms)", main="Masculine Form")
+     xlab="Self-use Frequency of Gender Inclusive Language", ylab="Initial-fixation M-F (ms)", main="Masculine Form")
 abline(lm(diff ~ exposure_use, fp), col="#1f77b4")
 plot(gp$exposure_use, gp$diff, pch=19,
      xlab="Self-use Frequency of Gender Inclusive Language", ylab="Go-past M-F (ms)", main="Star Form")
@@ -49,10 +49,10 @@ abline(lm(diff ~ exposure_use, gp), col="#1f77b4")
 png("plots/analysis/balanced_12/stats/corr_percept.png", width=1000, height=500)
 par(mfrow=c(1,2))
 plot(fp$exposure_percept, fp$diff, pch=19,
-     xlab="Perception Frequency of Gender Inclusive Language", ylab="first-pass M-F (ms)", main="Masculine Form")
+     xlab="Perception Frequency of Gender Inclusive Language", ylab="Initial-fixation M-F (ms)", main="Masculine Form")
 abline(lm(diff ~ exposure_percept, fp), col="#1f77b4")
 plot(gp$exposure_percept, gp$diff, pch=19,
-     xlab="Perception Frequency of Genfer Inclusive Language", ylab="go-past M-F (ms)", main="Star Form")
+     xlab="Perception Frequency of Genfer Inclusive Language", ylab="Go-past M-F (ms)", main="Star Form")
 abline(lm(diff ~ exposure_percept, gp), col="#1f77b4")
 
 dev.off()

@@ -361,9 +361,9 @@ def plot_measure(results, measure, condition_map, regions=('rn', 'an', 'spill'),
     ax.set_xticklabels(labels, fontsize=9)
     
     ylab_map = {
-        'first_pass_duration': 'first-pass fixation (ms)',
-        'total_duration': 'total fixation (ms)',
-        'go_past_duration': 'go-past (ms)',
+        'initial_fixation_duration': 'initial fixation duration (ms)',
+        'total_duration': 'total fixation duration (ms)',
+        'go_past_duration': 'go-past duration (ms)',
         'regressions_in': 'regression-in (count)',
         'n_fixations': 'fixations (count)'
     }

@@ -54,11 +54,13 @@
 >
 > -   Run: `python -m scripts.04_analysis --balanced`
 >
-> -   Purpose: AOI measures (initial-fixation, go-past duration, regression-in counts, total duration)
+> -   Purpose: AOI measures (initial fixation duration, go-past duration, regression-in counts, total fixation duration)
 >
 > -   Inspection -\> `data/processed/balanced_12/analysis_results.csv`
 >
 > **Step05. Statistics**
+>
+> -   *Note: original analysis was done without pbkrtest package, so used Satterthwaite approximation as fallback instead.*
 >
 > -   Run: `Rscript scripts/stats_lmm.R`
 >
@@ -72,7 +74,7 @@
 >
 > -   Inspection -\> `data/stats/analysis/analysis_stats.txt`; `plots/analysis/balanced_12/stats/`
 >
-> **Further quality checks (**need to complete Step01 first)
+> **Further quality checks** (need to complete Step01 first)
 >
 > -   Run: `python -m scripts.qc_events`
 >
