@@ -1,0 +1,15 @@
+# Python
+cateyes==0.0.5
+eyekit==0.7.1
+i2mc==2.2.8
+matplotlib==3.11.1
+numpy==2.5.2
+pandas==3.0.5
+Pillow==12.3.0
+PyYAML==6.0.3
+seaborn==0.13.2
+sympy==1.14.0
+
+# R
+lmerTest==3.2.1
+emmeans==2.0.4

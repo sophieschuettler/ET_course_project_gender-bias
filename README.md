@@ -144,7 +144,7 @@
 ├── .gitignore         <- List of files that you don’t want Git to automatically add
 |                         (default Python .gitignore was used)
 │
-└── (requirements.txt)<- List of modules and packages that are used for your project
+└── requirements.txt   <- List of modules and packages that are used for your project
                      
 ```
 
